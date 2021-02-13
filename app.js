@@ -18,6 +18,28 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require("./config")(app);
 
+// session configuration
+const session = require('express-session');
+// session store using mongo
+const MongoStore = require('connect-mongo')(session)
+
+const mongoose = require('./db/index');
+
+app.use(
+    session({
+        secret: 'keyboard cat', //process.env.SESSION_SECRET,
+        cookie: { maxAge: 1000 * 60 * 60 * 24 },
+        saveUninitialized: false,
+        //Forces the session to be saved back to the session store, 
+        // even if the session was never modified during the request.
+        resave: true,
+        store: new MongoStore({
+            mongooseConnection: mongoose.connection
+        })
+    })
+)
+// end of session configuration
+
 // default value for title local
 const projectName = "web-volunteer";
 const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
