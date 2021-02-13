@@ -5,4 +5,10 @@ router.get("/projects", (req, res, next) => {
 });
 
 
+router.post("/projects", (req, res, next) => {
+    // need Owner model to create a project
+  res.redirect("/projects");
+});
+
+
 module.exports = router;

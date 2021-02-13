@@ -2,4 +2,21 @@
 
 <form action="/projects" method="POST">
 
+    <label for="projectName">Name of your project: </label>
+    <input type="text" name="projectName" id="projectName">
+    <br>
+    <label for="description">Description: </label>
+    <textarea name="description" id="description" rows="4" cols="40"
+        placeholder="Please describe what you need for your project as detailed as possible.">
+    </textarea>
+    <br>
+    <label for="time">How many hours per week do you need help? </label>
+    <input type="number" name="time" id="time" placeholder="Select a number">
+    <br>
+    {{!-- to-do: Make this field optional: --}}
+    <label for="file">Add a file: </label>
+    <input type="file" name="file" id="file">
+    <br>
+    <button type="submit">Post this project</button>
+
 </form>
