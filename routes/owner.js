@@ -1,6 +1,8 @@
 const router = require("express").Router();
 
-// router.get ('/owner/profile/myprofile')
+router.get("/owner", (req, res, next) => {
+  res.render("owner");
+})
 
 router.get("/owner/profile/myprofile", (req, res, next) => {
   res.render("owner/profile/myprofile");
@@ -12,11 +14,9 @@ router.get("/owner/profile/myprofile", (req, res, next) => {
   res.render("owner/profile/myprofile");
 }); */
 
-// router.get ('/owner/profile/edit')
 router.get("/owner/profile/edit", (req, res, next) => {
   res.render("owner/profile/edit");
-});
-
+})
 
 router.get("/owner/projects/create", (req, res, next) => {
     res.render("owner/projects/create");
