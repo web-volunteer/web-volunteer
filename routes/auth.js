@@ -62,7 +62,7 @@ router.post('/signupWebDev', (req, res) => {
   const { username, password } = req.body;
   console.log(username, password);
   if (password.length < 8) {
-    return res.render('signup', { message: 'Your password has to be 8 chars min' });
+    return res.render('signup', { message: 'Your password has to be minimum 8 characters long.' });
   }
   if (username === '') {
     res.render('signup', { message: 'Your username cannot be empty' });
@@ -71,14 +71,14 @@ router.post('/signupWebDev', (req, res) => {
   Developer.findOne({ username: username })
     .then(devFromDB => {
       if (devFromDB !== null) {
-        res.render('signup', { message: 'Username is already taken' });
+        res.render('signup', { message: 'Username is already taken. Please choose a different one.' });
       } else {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt)
         Developer.create({ username: username, password: hash })
           .then(devFromDB => {
             console.log(devFromDB);
-            res.redirect('/webdev');
+            res.redirect('/login');
           })
       }
     })
@@ -93,7 +93,7 @@ router.post('/signupOwner', (req, res) => {
     const { username, password } = req.body;
     console.log(username, password);
     if (password.length < 8) {
-      return res.render('signup', { message: 'Your password has to be 8 chars min' });
+      return res.render('signup', { message: 'Your password has to be minimum 8 characters long.' });
     }
     if (username === '') {
       res.render('signup', { message: 'Your username cannot be empty' });
@@ -102,14 +102,14 @@ router.post('/signupOwner', (req, res) => {
     Owner.findOne({ username: username })
       .then(ownerFromDB => {
         if (ownerFromDB !== null) {
-          res.render('signup', { message: 'Username is already taken' });
+          res.render('signup', { message: 'Username is already taken. Please choose a different one.' });
         } else {
           const salt = bcrypt.genSaltSync();
           const hash = bcrypt.hashSync(password, salt)
           Owner.create({ username: username, password: hash })
             .then(ownerFromDB => {
               console.log(ownerFromDB);
-              res.redirect('/owner');
+              res.redirect('/login');
             })
         }
       })
