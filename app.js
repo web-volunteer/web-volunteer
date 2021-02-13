@@ -31,6 +31,12 @@ app.use("/", index);
 const owner = require("./routes/owner");
 app.use("/", owner);
 
+const webdev = require("./routes/webdev");
+app.use("/", webdev);
+
+const projects = require("./routes/projects");
+app.use("/", projects);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
