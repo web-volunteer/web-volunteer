@@ -1,0 +1,27 @@
+<h2>Edit your profile</h2>
+
+{{!-- to do: insert dynamic ID in route once model is created: --}}
+
+<form action="/owner/profile/myprofile" method="POST">
+
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name">
+
+    <label for="email">E-mail address: </label>
+    <input type="email" name="email" id="email">
+
+    {{!-- to do: make this field optional to fill out --}}
+    <label for="website">Website: </label>
+    <input type="website" name="website" id="website">
+
+    <label for="category">Category: </label>
+    <select name="category" id="category">
+        <option value="NGO">NGO</option>
+        <option value="individual">Individual</option>
+        <option value="start-up">Start-up</option>
+        <option value="education">Education</option>
+    </select>
+
+    <button type="submit">Edit</button>
+
+</form>
