@@ -32,6 +32,18 @@ const developerSchema = new Schema({
   projects: {
     type: Schema.Types.ObjectId,
     ref: 'Project'
+  },
+  website: { 
+    type: String,
+    unique: true,
+    trim: true,
+    lowercase: true
+  },
+  github: { 
+    type: String,
+    unique: true,
+    trim: true,
+    lowercase: true
   }
 }, 
   {

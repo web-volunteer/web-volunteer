@@ -1,1 +1,70 @@
 <h2>Edit your profile, web developer</h2>
+
+{{!-- to do: dynamic ID --}}
+
+<form action="/webdev/profile/create" method="POST">
+
+    <br>
+
+    <label for="firstname">First Name: </label>
+    <input type="text" name="firstname" id="firstname">
+
+    <br><br><br>
+
+    <label for="lastname">Last Name: </label>
+    <input type="text" name="lastname" id="lastname">
+
+    <br><br><br>
+
+    <label for="email">E-mail address: </label>
+    <input type="email" name="email" id="email" required>
+
+    {{!-- City partial --}}
+    <br><br><br>
+
+    <label for="location">Your location: </label>
+    <input type="text" name="location" id="location" placeholder="City, Country">
+
+    <br><br><br>
+
+    <label for="languages">Languages: </label>
+    <input type="text" name="languages" id="languages" placeholder="Enter languages you speak comma separated">
+
+    <br><br><br>
+
+    <label for="stack">Stack: </label>
+    <input type="text" name="stack" id="stack" placeholder="Enter your technical stack comma separated">
+
+    <br><br><br>
+
+    <label for="website">Website: </label>
+    <input type="url" name="website" id="website">
+
+    <br><br><br>
+
+    <label for="github">GitHub: </label>
+    <input type="url" name="github" id="github">    
+
+    <br><br><br>
+
+    <label for="time">Choose your availability: </label>
+    <select name="time" id="time">
+        <option value="1">Less than 5 hours/week.</option>
+        <option value="2">5 to 10 hours/week.</option>
+        <option value="3">More than 10 hours/week.</option>
+    </select>
+
+    <br><br><br>
+
+    <label for="experience">Choose your experience level: </label>
+    <select name="experience" id="experience">
+        <option value="1">Less than a year.</option>
+        <option value="2">From 1 to 5 years.</option>
+        <option value="3">More than 5 years.</option>
+    </select>
+
+    <br><br><br>
+
+    <button type="submit">Edit</button>
+
+</form>
