@@ -1,21 +1,66 @@
 const router = require("express").Router();
+const Owner = require('../models/Owner');
 
 router.get("/owner", (req, res, next) => {
-  res.render("owner");
+      const ownerId = req.session.user._id;
+  Owner.findById(ownerId)
+    .then(owner => {
+      console.log('log from /owner: ', owner);
+      res.render("owner", {owner});
+  }).catch(err => {
+      console.log(`error from get route /owner -->`, err);
+  })
 })
 
-router.get("/owner/profile/myprofile", (req, res, next) => {
-  res.render("owner/profile/myprofile");
-});
+router.get("/owner/profile/:id/myprofile", (req, res, next) => {
+  const ownerId = req.params.id;
+  //console.log('owner session: ', ownerId)
+Owner.findById(ownerId)
+    .then(owner => {
+      res.render("owner/profile/myprofile", {owner});
+  }).catch(err => {
+      console.log(`error from get route /owner/profile/myprofile -->`, err);
+  })
+})
 
-//need Owner model to complete this:
-/* router.get("/owner/profile/:id", (req, res, next) => {
-    const ownerId = req.params.id;
-  res.render("owner/profile/myprofile");
-}); */
+router.get("/owner/profile/:id/edit", (req, res, next) => {
+  const ownerId = req.params.id;
+  Owner.findById(ownerId)
+    .then(owner => {
+      console.log(`owner log: `, owner);
+      res.render("owner/profile/edit", {owner});
+  }).catch(err => {
+      console.log(`error from get route /owner/profile/:id/edit -->`, err);
+    })
+})
 
-router.get("/owner/profile/edit", (req, res, next) => {
-  res.render("owner/profile/edit");
+router.post("/owner/profile/:id/edit", (req, res, next) => {
+  const ownerId = req.params.id;
+  const {
+    nameOrg,
+    firstName,
+    lastName,
+    email,
+    website,
+    location,
+    languages,
+    description,
+    category
+  } = req.body;
+  Owner.findByIdAndUpdate(ownerId, { 
+    nameOrganisation: nameOrg,
+    firstName,
+    lastName,
+    email,
+    website,
+    location,
+    languages,
+    description,
+    category
+  }).then(() => {
+
+    res.redirect(`/owner/profile/${ownerId}/myprofile`);
+  })
 })
 
 router.get("/owner/projects/create", (req, res, next) => {

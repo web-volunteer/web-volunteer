@@ -42,7 +42,8 @@ router.post('/login', (req, res) => {
             } else {
                 // username exists as an owner
                 if (bcrypt.compareSync(password, ownerFromDB.password)) {
-                    req.session.user = ownerFromDB;
+                  req.session.user = ownerFromDB;
+                  console.log('owner: ', ownerFromDB)
                     res.redirect('/owner');
                   } else {
                     res.render('login', { message: 'Invalid credentials' });

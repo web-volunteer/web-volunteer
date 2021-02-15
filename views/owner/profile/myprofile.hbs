@@ -1,7 +1,21 @@
 <h1>Your profile</h1>
 
-{{name}}
+{{#with owner}}
+<p>Username: {{username}}</p>
+<p>Name of your organisation: {{nameOrganisation}}</p>
+<p>First Name: {{firstName}}</p>
+<p>Last Name: {{lastName}}</p>
+<p>E-mail: {{email}}</p>
+<p>Your website: {{website}}</p>
+<p>Your current location: {{location}}</p>
+<p>Your languages: {{languages}}</p>
+<p>Self-description: {{description}}</p>
+<p>Category: {{category}}</p>
 
-<p><a href="/owner/profile/edit">Edit your profile</a></p>
+
+
+<p><a href="/owner/profile/{{this._id}}/edit">Edit your profile</a></p>
 <p><a href="/owner/projects/myprojects">See your projects</a></p>
 <p><a href="/projects">See other projects</a></p>
+
+{{/with}}

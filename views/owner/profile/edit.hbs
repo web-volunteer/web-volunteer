@@ -1,37 +1,37 @@
-<h2>Edit your profile</h2>
-
-{{!-- to do: insert dynamic ID in route once model is created: --}}
 {{!-- to do: make some fields optional to fill out --}}
 
-<form action="/owner/profile/edit" method="POST">
+<h2>Edit your profile</h2>
+{{#with owner}}
+
+<form action="/owner/profile/{{this._id}}/edit" method="POST">
 
     <label for="username">Username: </label>
     <input type="username" name="username" id="username" value="{{username}}">
 
     <label for="nameOrg">Name of your organisation: </label>
-    <input type="text" name="nameOrg" id="nameOrg">
+    <input type="text" name="nameOrg" id="nameOrg" value="{{nameOrganisation}}">
 
     <label for="firstName">First Name: </label>
-    <input type="text" name="firstName" id="firstName">
+    <input type="text" name="firstName" id="firstName" value="{{firstName}}">
 
     <label for="lastName">Last Name: </label>
-    <input type="text" name="lastName" id="lastName">
+    <input type="text" name="lastName" id="lastName" value="{{lastName}}">
 
     <label for="email">E-mail address: </label>
-    <input type="email" name="email" id="email">
+    <input type="email" name="email" id="email" value="{{email}}">
 
     <label for="website">Website: </label>
-    <input type="url" name="website" id="website" placeholder="optional">
+    <input type="url" name="website" id="website" placeholder="optional" value="{{website}}">
 
     <label for="location">Your location: </label>
-    <input type="text" name="location" id="location" placeholder="city, country">
+    <input type="text" name="location" id="location" placeholder="city, country" value="{{location}}">
 
     <label for="languages">Languages: </label>
-    <input type="text" name="languages" id="languages" placeholder="Enter languages you speak">
+    <input type="text" name="languages" id="languages" placeholder="Enter languages you speak" value="{{languages}}">
 
     <label for="description">Description: </label>
     <textarea name="description" id="description" rows="4" cols="40"
-        placeholder="Please describe yourself or your institution in a few sentences.">
+        placeholder="Please describe yourself or your institution in a few sentences.">{{description}}
     </textarea>
 
     <label for="category">Category: </label>
@@ -49,3 +49,5 @@
     <button type="submit">Edit</button>
 
 </form>
+
+{{/with}}
