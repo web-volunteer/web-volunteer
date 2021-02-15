@@ -3,10 +3,16 @@ const { Schema, model } = require("mongoose");
 const ownerSchema = new Schema({
   username: {
     type: String,
-    unique: true
+    unique: true,
+    required: true
   },
   password: String,
-  email: String,
+  email: { 
+    type: String,
+    unique: true,
+    trim: true,
+    lowercase: true
+  },
   nameOrganisation: String,
   firstName: String,
   lastName: String,
@@ -22,8 +28,11 @@ const ownerSchema = new Schema({
   projects: {
     type: Schema.Types.ObjectId,
     ref: 'Project'
+  },
+  timestamps: {
+    createdAt: "created_at",
+    updatedAt: "updated_at"
   }
-
 });
 
 const Owner = model("Owner", ownerSchema);
