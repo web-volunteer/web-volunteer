@@ -1,6 +1,7 @@
-<h1>Welcome project owner!</h1>
 {{#with owner}}
-<p><a href="/owner/profile/myprofile">See your profile</a></p>
+<h1>Welcome {{username}}!</h1>
+<p>What would you like to do?</p>
+<p><a href="/owner/profile/{{this._id}}/myprofile">See your profile</a></p>
 <p><a href="/owner/projects/myprojects">See your projects</a></p>
 <p><a href="/owner/projects/create">Create a project</a></p>
 {{/with}}
