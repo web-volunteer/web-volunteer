@@ -1,8 +1,30 @@
 <h2>Your profile, web developer</h2>
 
 {{!-- render profile via web dev ID here --}}
+<p><strong>First name: </strong> {{developer.firstname}}</p>
 
+<p><strong>Last name: </strong> {{developer.lastname}}</p>
 
-<p><a href="/webdev/profile/edit">Edit your profile</a></p>
-<p><a href="/webdev/myprojects">See your projects</a></p>
+<p><strong>Email: </strong> {{developer.email}}</p>
+
+<p><strong>Country: </strong> {{developer.country}}</p>
+
+<p><strong>City: </strong> {{developer.city}}</p>
+
+<p><strong>Languages: </strong> {{developer.languages}}</p>
+
+<p><strong>Stack: </strong> {{developer.stack}}</p>
+
+<p><strong>Availability: </strong> {{developer.time}}</p>
+
+<p><strong>Experience: </strong> {{developer.experience}}</p>
+
+<p><strong>Website: </strong> {{developer.website}}</p>
+
+<p><strong>GitHub: </strong> {{developer.github}}</p>
+
+<p><strong>Description: </strong> {{developer.description}}</p>
+
+<p><a href="/webdev/profile/{{ developer._id}}/edit">Edit your profile</a></p>
+<p><a href="/webdev/myprojects/{{ developer._id}}/">See your projects</a></p>
 <p><a href="/projects">Find a project</a></p>
