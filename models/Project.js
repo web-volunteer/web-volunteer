@@ -18,7 +18,12 @@ const projectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Developer'
     }
-  ]
+  ],
+  time_per_week: {
+    type: Number,
+    min: 0,
+    max: 40
+  }
 });
 
 const Project = mongoose.model('Project', projectSchema);
