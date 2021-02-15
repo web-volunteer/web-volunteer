@@ -48,7 +48,8 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
           time,
           experience, 
           website,
-          github} = req.body;
+          github,
+          description } = req.body;
 
   Developer.findByIdAndUpdate(req.params.id, { firstname: firstname,
                                                lastname: lastname,
@@ -60,7 +61,8 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
                                                time: time,
                                                experience, experience,
                                                website: website,
-                                               github: github
+                                               github: github,
+                                               description: description
                                                })
     .then(() => {
       res.redirect(`/webdev/profile/${req.params.id}/myprofile`);

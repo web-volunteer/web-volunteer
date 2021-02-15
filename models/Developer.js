@@ -45,7 +45,8 @@ const developerSchema = new Schema({
     unique: true,
     trim: true,
     lowercase: true
-  }
+  },
+  description: String
 }, 
   {
   timestamps: {
