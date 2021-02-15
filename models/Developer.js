@@ -16,9 +16,8 @@ const developerSchema = new Schema({
   },
   country: String,
   city: String,
-  languages: [{
-    type: String
-  }],
+  primarylanguage: String,
+  secondarylanguage: String,
   stack: [{
     type: String
   }],
