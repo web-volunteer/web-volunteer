@@ -31,12 +31,12 @@ const ownerSchema = new Schema({
   }
   
 },
-{
-  timestamps: {
-    createdAt: "created_at",
-    updatedAt: "updated_at"
-  }
-});
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }  
+  });
 
 const Owner = model("Owner", ownerSchema);
 

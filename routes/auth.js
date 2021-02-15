@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
                 // username exists as a developer
                 if (bcrypt.compareSync(password, devFromDB.password)) {
                     req.session.user = devFromDB;
-                    res.redirect('/webdev');
+                    res.render('webdev/index.hbs', { webdev: devFromDB });
                   } else {
                     res.render('login', { message: 'Invalid credentials' });
                   } 
