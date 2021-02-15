@@ -14,7 +14,8 @@ const developerSchema = new Schema({
     trim: true,
     lowercase: true
   },
-  location: String,
+  country: String,
+  city: String,
   languages: [{
     type: String
   }],

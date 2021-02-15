@@ -22,13 +22,15 @@
     {{!-- City partial --}}
     <br><br><br>
 
-    <label for="location">Your location: </label>
-    <input type="text" name="location" id="location" placeholder="City, Country" value={{developer.location}}>
+    <label for="country">Country: </label>
+    {{!-- <input type="text" name="location" id="location" placeholder="City, Country" value={{developer.location}}> --}}
+     {{> locationPartial developer.country}}
 
     <br><br><br>
 
     <label for="languages">Languages: </label>
-    <input type="text" name="languages" id="languages" placeholder="Enter languages you speak comma separated" value={{developer.languages}}>
+    {{!-- <input type="text" name="languages" id="languages" placeholder="Enter languages you speak comma separated" value={{developer.languages}}> --}}
+    {{> languagePartial developer.languages.[0]}}
 
     <br><br><br>
 

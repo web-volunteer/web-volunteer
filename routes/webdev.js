@@ -19,6 +19,7 @@ router.get("/webdev/", (req, res, next) => {
 router.get("/webdev/profile/:id/edit", (req, res, next) => {
   Developer.findById(req.params.id)
     .then(developer => {
+      //toDo: handle the selected values for location and language
       res.render("webdev/profile/edit", { developer });
     })
     .catch(err => {
@@ -36,18 +37,21 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
   const { firstname,
           lastname,
           email,
-          location,
+          country,
+          city,
           languages,
           stack,
           time,
           experience, 
           website,
           github} = req.body;
+
   Developer.findByIdAndUpdate(req.params.id, { firstname: firstname,
                                                lastname: lastname,
                                                email: email,
-                                               location: location,
-                                               languages: languages.split(','),
+                                               country: country,
+                                               city, city,
+                                               languages: languages,
                                                stack: stack,
                                                time: time,
                                                experience, experience,
@@ -55,14 +59,6 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
                                                github: github
                                                })
     .then(() => {
-      Developer.aggregate(
-        [
-            { "$addFields": { 
-                "languages": { "$split": [ "$languages", "," ] } 
-            }},
-            {$out:"Developer"}
-        ]
-      )
       res.redirect(`/webdev/profile/${req.params.id}/myprofile`);
     })
     .catch(err => {
