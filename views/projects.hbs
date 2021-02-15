@@ -1,5 +1,5 @@
 <h1>All projects</h1>
-{{#with project}}
+{{#each projectList}}
 
 <h3>{{title}}</h3>
 <p>Description: {{description}}</p>
@@ -8,4 +8,5 @@
 <p>Time needed per week: {{time_per_week}}</p>
 
 <a href="/owner/projects/edit">Edit this project</a>
-{{/with}}
+<a href="/owner/projects/delete">Delete this project</a>
+{{/each}}
