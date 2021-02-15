@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const Developer = require('../models/Developer');
+const Project = require('../models/Project');
+
 
 router.get("/webdev/profile/:id/myprofile", (req, res, next) => {
   Developer.findById(req.params.id)

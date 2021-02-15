@@ -1,1 +1,11 @@
 <h1>All projects</h1>
+{{#with project}}
+
+<h3>{{title}}</h3>
+<p>Description: {{description}}</p>
+<p>Owner of this project: {{owner._id}}</p>
+<p>Current status: {{status}}</p>
+<p>Time needed per week: {{time_per_week}}</p>
+
+<a href="/owner/projects/edit">Edit this project</a>
+{{/with}}
