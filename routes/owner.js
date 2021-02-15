@@ -65,8 +65,10 @@ router.post("/owner/profile/:id/edit", (req, res, next) => {
   })
 })
 
-router.get("/owner/projects/create", (req, res, next) => {
-    res.render("owner/projects/create");
+router.get("/owner/:id/projects/create", (req, res, next) => {
+  const ownerId = req.params.id;
+  console.log(`ownerID: `, ownerId);
+    res.render("owner/projects/create", {ownerId});
 })
 
 router.get("/owner/projects/edit", (req, res, next) => {
