@@ -28,6 +28,11 @@
 
     <br><br><br>
 
+    <label for="city">City: </label>
+    <input type="text" name="city" id="city" value={{developer.city}}>
+
+    <br><br><br>
+
     <label for="languages">Languages: </label>
     {{!-- <input type="text" name="languages" id="languages" placeholder="Enter languages you speak comma separated" value={{developer.languages}}> --}}
     {{> languagePartial developer.languages.[0]}}
@@ -35,7 +40,7 @@
     <br><br><br>
 
     <label for="stack">Stack: </label>
-    <input type="text" name="stack" id="stack" placeholder="Enter your technical stack comma separated" value={{developer.stack}}>
+    <input type="text" name="stack" id="stack" placeholder="Enter your technical stack comma separated" value={{#each developer.stack}}{{this}}{{/each}}>
 
     <br><br><br>
 

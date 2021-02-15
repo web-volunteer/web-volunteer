@@ -4,6 +4,9 @@ const Developer = require('../models/Developer');
 router.get("/webdev/profile/:id/myprofile", (req, res, next) => {
   Developer.findById(req.params.id)
     .then(developer => {
+      developer.time = ['<5hrs/week', '5-10hrs/week', '>10hrs/week'][developer.time - 1]
+      developer.experience = ['< 1 year', '1-5 years', '> 5 years'][developer.experience - 1]
+      developer.stack = developer.stack.join(', ');
       res.render("webdev/profile/myprofile", { developer });
     })
     .catch(err => {
@@ -20,6 +23,7 @@ router.get("/webdev/profile/:id/edit", (req, res, next) => {
   Developer.findById(req.params.id)
     .then(developer => {
       //toDo: handle the selected values for location and language
+      //developer.stack = developer.stack.join(', ');
       res.render("webdev/profile/edit", { developer });
     })
     .catch(err => {
@@ -52,7 +56,7 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
                                                country: country,
                                                city, city,
                                                languages: languages,
-                                               stack: stack,
+                                               stack: stack.split(',').map(element => {return element.trim()}),
                                                time: time,
                                                experience, experience,
                                                website: website,
