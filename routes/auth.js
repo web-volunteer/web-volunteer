@@ -27,6 +27,8 @@ router.post('/login', (req, res) => {
     .then(devFromDB => {
       Owner.findOne({ username: username })
          .then(ownerFromDB => {
+            console.log('dev :', devFromDB)
+            console.log('owner: ',ownerFromDB)
             if (devFromDB === null && ownerFromDB === null) {
                 // if username does not exist as developer or owner
                 res.render('login', { message: 'Invalid credentials' });
@@ -40,11 +42,12 @@ router.post('/login', (req, res) => {
                     res.render('login', { message: 'Invalid credentials' });
                   } 
             } else {
+                console.log('I am in the else!')
                 // username exists as an owner
                 if (bcrypt.compareSync(password, ownerFromDB.password)) {
                   req.session.user = ownerFromDB;
                   console.log('owner: ', ownerFromDB)
-                    res.redirect('/owner');
+                    res.render('owner/index.hbs', { owner: ownerFromDB });
                   } else {
                     res.render('login', { message: 'Invalid credentials' });
                   } 

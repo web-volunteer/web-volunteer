@@ -10,7 +10,7 @@ const developerSchema = new Schema({
   lastname: String,
   email: { 
     type: String,
-    unique: true,
+    /* unique: true, */
     trim: true,
     lowercase: true
   },
