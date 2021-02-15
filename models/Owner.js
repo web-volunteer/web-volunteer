@@ -29,6 +29,7 @@ const ownerSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Project'
   }
+  
 },
   {
     timestamps: {
