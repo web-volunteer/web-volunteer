@@ -9,7 +9,7 @@ const ownerSchema = new Schema({
   password: String,
   email: { 
     type: String,
-    /* unique: true, */
+    unique: true,
     trim: true,
     lowercase: true
   },
