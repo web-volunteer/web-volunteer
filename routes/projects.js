@@ -18,7 +18,6 @@ router.post("/projects", (req, res, next) => {
     owner,
     status,
     time_per_week: time 
-    
   })
     .then(() => {
       console.log(`post projects log: `, req.body);
