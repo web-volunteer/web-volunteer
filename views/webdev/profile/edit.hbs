@@ -33,10 +33,18 @@
 
     <br><br><br>
 
-    <label for="languages">Languages: </label>
-    {{!-- <input type="text" name="languages" id="languages" placeholder="Enter languages you speak comma separated" value={{developer.languages}}> --}}
-    {{> languagePartial developer.languages.[0]}}
+    <label for="primarylanguage">Primary language: </label>
+    <select id="primarylanuage" name="primarylanguage">
+        {{> languagePartial}}
+    </select>
 
+    <br><br><br>
+
+    <label for="secondarylanguage">Secondary language: </label>
+    <select id="secondarylanguage" name="secondarylanguage">
+        {{> languagePartial}}
+    </select>
+    
     <br><br><br>
 
     <label for="stack">Stack: </label>
@@ -56,18 +64,42 @@
 
     <label for="time">Choose your availability: </label>
     <select name="time" id="time">
-        <option value="1">Less than 5 hours/week.</option>
-        <option value="2">5 to 10 hours/week.</option>
-        <option value="3">More than 10 hours/week.</option>
+        {{#if devAvailability.lessthan5hrs}}
+            <option value="1" selected>Less than 5 hours/week.</option>
+        {{else}}
+            <option value="1">Less than 5 hours/week.</option>
+        {{/if}}
+        {{#if devAvailability.fivetotenhrs}}
+            <option value="2" selected>5 to 10 hours/week.</option>
+        {{else}}
+            <option value="2">5 to 10 hours/week.</option>
+        {{/if}}
+        {{#if devAvailability.morethan10hrs}}
+            <option value="3" selected>More than 10 hours/week.</option>
+        {{else}}
+            <option value="3">More than 10 hours/week.</option>
+        {{/if}}        
     </select>
 
     <br><br><br>
 
     <label for="experience">Choose your experience level: </label>
     <select name="experience" id="experience">
-        <option value="1">Less than a year.</option>
-        <option value="2">From 1 to 5 years.</option>
-        <option value="3">More than 5 years.</option>
+        {{#if devExperience.lessthan1year}}
+            <option value="1" selected>Less than a year.</option>
+        {{else}}
+            <option value="1">Less than a year.</option>
+        {{/if}}
+        {{#if devExperience.onetofiveyears}}
+            <option value="2" selected>From 1 to 5 years.</option>            
+        {{else}}
+            <option value="2">From 1 to 5 years.</option>
+        {{/if}}
+        {{#if devExperience.morethan5}}
+            <option value="3" selected>More than 5 years.</option>
+        {{else}}
+            <option value="3">More than 5 years.</option>
+        {{/if}}
     </select>
 
     <br><br><br>

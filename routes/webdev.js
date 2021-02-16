@@ -24,7 +24,18 @@ router.get("/webdev/profile/:id/edit", (req, res, next) => {
     .then(developer => {
       //toDo: handle the selected values for location and language
       //developer.stack = developer.stack.join(', ');
-      res.render("webdev/profile/edit", { developer });
+      
+      /* should be in the same order of values as the experience enum in Developer model */
+      const devExperience = { lessthan1year: false, onetofiveyears: false, morethan5: false}
+      let expKeys = Object.keys(devExperience);
+      devExperience[expKeys[developer.experience - 1]] = true;
+
+      /* should be in the same order of values as the time enum in Developer model */
+      const devAvailability = { lessthan5hrs: false, fivetotenhrs: false, morethan10hrs: false}
+      let availKeys = Object.keys(devAvailability);
+      devAvailability[availKeys[developer.time - 1]] = true;
+
+      res.render("webdev/profile/edit", { developer, devExperience, devAvailability });
     })
     .catch(err => {
       console.log('Error while finding developer by id:', err);
@@ -43,7 +54,8 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
           email,
           country,
           city,
-          languages,
+          primarylanguage,
+          secondarylanguage,
           stack,
           time,
           experience, 
@@ -56,7 +68,8 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
                                                email: email,
                                                country: country,
                                                city, city,
-                                               languages: languages,
+                                               primarylanguage: primarylanguage,
+                                               secondarylanguage: secondarylanguage,
                                                stack: stack.split(',').map(element => {return element.trim()}),
                                                time: time,
                                                experience, experience,

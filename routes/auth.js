@@ -63,8 +63,8 @@ router.post('/login', (req, res) => {
 // the Webdev signup form posts to this route
 router.post('/signupWebDev', (req, res) => {
   console.log("Webdev post is triggered")
-  const { username, password } = req.body;
-  console.log(username, password);
+  const { username, password, email } = req.body;
+  console.log(username, password, email);
   if (password.length < 8) {
     return res.render('signup', { message: 'Your password has to be minimum 8 characters long.' });
   }
@@ -79,7 +79,7 @@ router.post('/signupWebDev', (req, res) => {
       } else {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt)
-        Developer.create({ username: username, password: hash })
+        Developer.create({ username: username, password: hash, email: email })
           .then(devFromDB => {
             console.log(devFromDB);
             res.redirect('/login');
@@ -94,8 +94,8 @@ router.post('/signupWebDev', (req, res) => {
 // the Owner signup form posts to this route
 router.post('/signupOwner', (req, res) => {
     console.log("Owner post is triggered")
-    const { username, password } = req.body;
-    console.log(username, password);
+    const { username, password, email } = req.body;
+    console.log(username, password, email);
     if (password.length < 8) {
       return res.render('signup', { message: 'Your password has to be minimum 8 characters long.' });
     }
@@ -110,7 +110,7 @@ router.post('/signupOwner', (req, res) => {
         } else {
           const salt = bcrypt.genSaltSync();
           const hash = bcrypt.hashSync(password, salt)
-          Owner.create({ username: username, password: hash })
+          Owner.create({ username: username, password: hash, email: email })
             .then(ownerFromDB => {
               console.log(ownerFromDB);
               res.redirect('/login');

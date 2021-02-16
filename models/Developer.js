@@ -10,15 +10,14 @@ const developerSchema = new Schema({
   lastname: String,
   email: { 
     type: String,
-    /* unique: true, */
+    unique: true,
     trim: true,
     lowercase: true
   },
   country: String,
   city: String,
-  languages: [{
-    type: String
-  }],
+  primarylanguage: String,
+  secondarylanguage: String,
   stack: [{
     type: String
   }],
