@@ -60,7 +60,6 @@ router.post("/owner/profile/:id/edit", (req, res, next) => {
     description,
     category
   }).then(() => {
-
     res.redirect(`/owner/profile/${ownerId}/myprofile`);
   })
 })
@@ -71,8 +70,14 @@ router.get("/owner/:id/projects/create", (req, res, next) => {
     res.render("owner/projects/create", {ownerId});
 })
 
-router.get("/owner/projects/edit", (req, res, next) => {
-    res.render("owner/projects/edit");
+router.get("/owner/:id/projects/edit", (req, res, next) => {
+    const ownerId = req.params.id;
+    res.render("owner/projects/edit", {ownerId});
+})
+
+router.post("/owner/:id/projects/edit", (req, res, next) => {
+    const ownerId = req.params.id;
+    res.render("owner/projects/edit", {ownerId});
 })
 
 router.get("/owner/projects/myprojects", (req, res, next) => {

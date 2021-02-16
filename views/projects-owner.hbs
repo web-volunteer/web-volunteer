@@ -7,6 +7,10 @@
 <p>Current status: {{status}}</p>
 <p>Time needed per week: {{time_per_week}}</p>
 
-<a href="/owner/projects/edit">Edit this project</a>
-<a href="/owner/projects/delete">Delete this project</a>
+{{#if this.belongsToOwner}}
+<p>inside if!!</p>
+<a href="/owner/{{ownerId}}/projects/edit">Edit this project</a>
+<a href="/owner/{{ownerId}}/projects/delete">Delete this project</a>
+
+{{/if}}
 {{/each}}
