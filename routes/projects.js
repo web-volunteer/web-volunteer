@@ -2,24 +2,30 @@ const router = require("express").Router();
 const Project = require('../models/Project');
 const { get } = require("./owner");
 
+//under construction: now adding populate to display owner
 router.get("/:id/projects-owner", (req, res, next) => {
   const ownerId = req.params.id;
   console.log('ownerId', ownerId)
   Project.find()
+    .populate('owner')
     .lean()
     .then(projects => {
       projects.forEach(project => {
         //console.log(typeof ownerId)
         //console.log(typeof project.owner)
-        if (project.owner == ownerId) {
+        if (project.owner._id == ownerId) {
           project.belongsToOwner = true;
-
+          
         } else {
           project.belongsToOwner = false;
         }
+        project.time_per_week = ['<5hrs/week', '5-10hrs/week', '>10hrs/week'][project.time_per_week -1]
       })
+      console.log('projects log: ', projects)
+      
       res.render("projects-owner", { ownerId: ownerId, projectList: projects });
-  })
+    })
+  
 });
 
 //to-do: display time correctly
