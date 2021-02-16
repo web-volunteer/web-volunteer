@@ -83,6 +83,17 @@ router.post("/owner/:id/projects/edit", (req, res, next) => {
     res.render("owner/projects/edit", {ownerId});
 })
 
+router.get('/owner/:id/projects/delete', (req, res) => {
+  const projectId = req.params.id;
+  Project.findByIdAndRemove(projectId)
+    .then((project) => {
+    res.redirect(`/${project.owner}/projects-owner`);
+  }).catch(err => {
+      console.log(err);
+    })
+})
+
+
 //todo:
 router.get("/owner/projects/myprojects", (req, res, next) => {
     res.render("owner/projects/myprojects");
