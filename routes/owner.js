@@ -29,7 +29,6 @@ router.get("/owner/profile/:id/edit", (req, res, next) => {
   const ownerId = req.params.id;
   Owner.findById(ownerId)
     .then(owner => {
-      console.log(`owner log: `, owner);
       res.render("owner/profile/edit", {owner});
   }).catch(err => {
       console.log(`error from get route /owner/profile/:id/edit -->`, err);
@@ -66,15 +65,13 @@ router.post("/owner/profile/:id/edit", (req, res, next) => {
 
 router.get("/owner/:id/projects/create", (req, res, next) => {
   const ownerId = req.params.id;
-  console.log(`ownerID: `, ownerId);
+  //console.log(`ownerID: `, ownerId);
     res.render("owner/projects/create", {ownerId});
 })
 
-//under construction:
 router.get("/owner/:id/projects/edit", (req, res, next) => {
   const ownerId = req.params.id;
   console.log('project id log:', ownerId)
-  console.log('req body log:', req.body)
   Project.findById(ownerId)
     .then(project => {
       res.render("owner/projects/edit", {project});

@@ -26,7 +26,7 @@ router.get("/:id/projects-owner", (req, res, next) => {
 router.post("/:id/projects-owner", (req, res, next) => {
   const { title, description, status, time } = req.body;
   const ownerId = req.params.id;
-  //console.log(`post req body log: `, req.body);
+  //console.log(`post route req body log: `, req.body);
   Project.create({
     title,
     description,
@@ -35,7 +35,6 @@ router.post("/:id/projects-owner", (req, res, next) => {
     owner: ownerId,
   })
     .then(() => {
-      //console.log(`post projects log: `, req.body);
       res.redirect(`/${ownerId}/projects-owner`);
   })
 });
@@ -43,10 +42,8 @@ router.post("/:id/projects-owner", (req, res, next) => {
 
 router.post("/:id/projects", (req, res, next) => {
   const projectId = req.params.id;
-    console.log('params:', req.params);
-    console.log('body: ', req.body);
     const { title, description, status, time } = req.body;
-console.log('logging project id:', projectId)
+    console.log('logging project id:', projectId)
   Project.findByIdAndUpdate(projectId, { title, description, status, time_per_week: time }).then((project) => {
     res.redirect(`/${project.owner}/projects-owner`)
   }).catch(err => {
