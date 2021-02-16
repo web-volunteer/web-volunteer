@@ -1,27 +1,24 @@
 const router = require("express").Router();
 const Project = require('../models/Project');
+const { get } = require("./owner");
 
 router.get("/:id/projects-owner", (req, res, next) => {
   const ownerId = req.params.id;
-  console.log('owner id:', ownerId);
+  console.log('ownerId', ownerId)
   Project.find()
     .lean()
     .then(projects => {
-      
-      //console.log(`logging all projects:`, projects)
       projects.forEach(project => {
-        console.log(typeof ownerId)
-        console.log(typeof project.owner)
+        //console.log(typeof ownerId)
+        //console.log(typeof project.owner)
         if (project.owner == ownerId) {
           project.belongsToOwner = true;
 
         } else {
           project.belongsToOwner = false;
         }
-        //console.log('logging the new project', project)
       })
-      //console.log('logging project key: ', projects[0])
-      res.render("projects-owner", {projectList: projects, ownerId});
+      res.render("projects-owner", { ownerId: ownerId, projectList: projects });
   })
 });
 
@@ -42,6 +39,21 @@ router.post("/:id/projects-owner", (req, res, next) => {
       res.redirect(`/${ownerId}/projects-owner`);
   })
 });
+
+
+router.post("/:id/projects", (req, res, next) => {
+  const projectId = req.params.id;
+    console.log('params:', req.params);
+    console.log('body: ', req.body);
+    const { title, description, status, time } = req.body;
+console.log('logging project id:', projectId)
+  Project.findByIdAndUpdate(projectId, { title, description, status, time_per_week: time }).then((project) => {
+    res.redirect(`/${project.owner}/projects-owner`)
+  }).catch(err => {
+      console.log('error in post route id/projects', err);
+    })
+})
+
 
 
 module.exports = router;

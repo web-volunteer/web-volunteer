@@ -70,9 +70,15 @@ router.get("/owner/:id/projects/create", (req, res, next) => {
     res.render("owner/projects/create", {ownerId});
 })
 
+//under construction:
 router.get("/owner/:id/projects/edit", (req, res, next) => {
-    const ownerId = req.params.id;
-    res.render("owner/projects/edit", {ownerId});
+  const ownerId = req.params.id;
+  console.log('project id log:', ownerId)
+  console.log('req body log:', req.body)
+  Project.findById(ownerId)
+    .then(project => {
+      res.render("owner/projects/edit", {project});
+  })
 })
 
 router.post("/owner/:id/projects/edit", (req, res, next) => {
@@ -80,6 +86,7 @@ router.post("/owner/:id/projects/edit", (req, res, next) => {
     res.render("owner/projects/edit", {ownerId});
 })
 
+//todo:
 router.get("/owner/projects/myprojects", (req, res, next) => {
     res.render("owner/projects/myprojects");
 })
