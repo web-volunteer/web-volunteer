@@ -8,11 +8,9 @@ body {
   height: 100vh;
 }
 
-
-
 .login-container {
-     background-color: rgb(203 235 232 / 94%);
-border-radius: 25px;
+  background-color: rgb(203 235 232 / 94%);
+  border-radius: 25px;
   flex-direction: column;
- padding: 20px;
+  padding: 20px;
 }

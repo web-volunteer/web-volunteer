@@ -7,8 +7,16 @@ body {
 .homepage-container {
   background-color: #cbebe8;
 }
+.navbar {
+  color: #cbebe8;
+  background-color: #19aaaa;
+  padding: 8px;
+  text-align: right;
+}
 
-
+.navbar a {
+  background-color: #8573bf;
+}
 
 .header-container {
   background-color: #d9e5ff;
@@ -23,12 +31,10 @@ body {
   text-shadow: 1px 2px 10px #8573bf;
   text-align: center;
   margin: 20px;
-  margin-right: 97px;
+  margin-right: 160px;
   font-style: italic;
   font-size: 20px;
 }
-
-
 
 .intro-section {
   margin: 50px 10px;
@@ -42,8 +48,18 @@ body {
   box-shadow: 2px 2px 5px 1px #8573bf;
 }
 
-
-
 p {
   margin: 30px 0;
+}
+
+footer {
+  color: #cbebe8;
+  background-color: #19aaaa;
+  padding: 1px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 20px;
 }
