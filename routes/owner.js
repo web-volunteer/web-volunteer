@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const Owner = require('../models/Owner');
+const Project = require('../models/Project');
+
 
 router.get("/owner", (req, res, next) => {
       const ownerId = req.session.user._id;
@@ -27,7 +29,6 @@ router.get("/owner/profile/:id/edit", (req, res, next) => {
   const ownerId = req.params.id;
   Owner.findById(ownerId)
     .then(owner => {
-      console.log(`owner log: `, owner);
       res.render("owner/profile/edit", {owner});
   }).catch(err => {
       console.log(`error from get route /owner/profile/:id/edit -->`, err);
@@ -58,19 +59,31 @@ router.post("/owner/profile/:id/edit", (req, res, next) => {
     description,
     category
   }).then(() => {
-
     res.redirect(`/owner/profile/${ownerId}/myprofile`);
   })
 })
 
-router.get("/owner/projects/create", (req, res, next) => {
-    res.render("owner/projects/create");
+router.get("/owner/:id/projects/create", (req, res, next) => {
+  const ownerId = req.params.id;
+  //console.log(`ownerID: `, ownerId);
+    res.render("owner/projects/create", {ownerId});
 })
 
-router.get("/owner/projects/edit", (req, res, next) => {
-    res.render("owner/projects/edit");
+router.get("/owner/:id/projects/edit", (req, res, next) => {
+  const ownerId = req.params.id;
+  console.log('project id log:', ownerId)
+  Project.findById(ownerId)
+    .then(project => {
+      res.render("owner/projects/edit", {project});
+  })
 })
 
+router.post("/owner/:id/projects/edit", (req, res, next) => {
+    const ownerId = req.params.id;
+    res.render("owner/projects/edit", {ownerId});
+})
+
+//todo:
 router.get("/owner/projects/myprojects", (req, res, next) => {
     res.render("owner/projects/myprojects");
 })

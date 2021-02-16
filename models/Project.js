@@ -24,7 +24,13 @@ const projectSchema = new Schema({
     min: 0,
     max: 40
   }
-});
+},
+{
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }  
+  });
 
 const Project = mongoose.model('Project', projectSchema);
 

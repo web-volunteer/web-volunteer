@@ -1,1 +1,38 @@
 <h2>Edit your project</h2>
+
+{{#with project}}
+<form action="/{{_id}}/projects" method="POST">
+
+    <label for="title">Title of your project: </label>
+    <input type="text" name="title" id="title" placeholder="Choose a title" value="{{title}}">
+    <br>
+    <label for="description">Description: </label>
+    <textarea name="description" id="description" rows="4" cols="40"
+        placeholder="Please describe what you need for your project as detailed as possible.">{{description}}</textarea>
+    <br>
+
+    <label for="status">Current status of your project: </label>
+    <select name="status" id="status">
+        <option value="open">open</option>
+        <option value="running">running</option>
+        <option value="closed">closed</option>
+    </select>
+
+    <label for="time">How much time do you need help for? </label>
+    <select name="time" id="time">
+        <option value="1">Less than 5 hours/week.</option>
+        <option value="2">5 to 10 hours/week.</option>
+        <option value="3">More than 10 hours/week.</option>
+    </select>
+
+    {{!-- to-do: Make this field optional:
+    <label for="file">Add a file: </label>
+    <input type="file" name="file" id="file"> --}}
+    <br><br>
+    <button type="submit">Edit</button>
+
+</form>
+
+<a href="/owner/projects/delete">Delete this project</a>
+
+{{/with}}
