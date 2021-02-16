@@ -7,11 +7,11 @@ router.get("/:id/projects-owner", (req, res, next) => {
   const ownerId = req.params.id;
   console.log('ownerId', ownerId)
   Project.find()
-    .populate('owner')
+    .populate('owner').populate('applicants')
     .lean()
     .then(projects => {
       projects.forEach(project => {
-        //console.log(typeof ownerId)
+        console.log(project)
         //console.log(typeof project.owner)
         if (project.owner._id == ownerId) {
           project.belongsToOwner = true;
@@ -21,7 +21,7 @@ router.get("/:id/projects-owner", (req, res, next) => {
         }
         project.time_per_week = ['<5hrs/week', '5-10hrs/week', '>10hrs/week'][project.time_per_week -1]
       })
-      console.log('projects log: ', projects)
+      // console.log('projects log: ', projects)
       
       res.render("projects-owner", { ownerId: ownerId, projectList: projects });
     })

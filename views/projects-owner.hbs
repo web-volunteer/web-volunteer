@@ -8,7 +8,16 @@
 <p>Time needed per week: {{time_per_week}}</p>
 {{!-- <p>we are in line 9! {{belongsToOwner}}</p> --}}
 
+
 {{#if this.belongsToOwner}}
+
+{{!-- To be changed to link to special view for developer's profile --}}
+{{#each applicants}}
+    <a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>&emsp;<button style="background-color: #00cc00; color: #ffffff;">Accept</button>&emsp;<input type="button" value="Reject" style="background-color: #cc0000; color: #ffffff;" />
+    <br>
+    <br>
+{{/each}}
+
 <a href="/owner/{{_id}}/projects/edit">Edit this project</a>
 <a href="/owner/{{_id}}/projects/delete">Delete this project</a>
 
