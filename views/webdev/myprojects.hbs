@@ -1,4 +1,20 @@
 <h2>My projects</h2>
 
-<a href="/webdev/profile/myprofile">See your profile</a>
-<a href="/projects">Find a new project</a>
+<a href="/webdev/profile/{{webdevID}}/myprofile">See your profile</a>
+<a href="/webdev/{{webdevID}}/projects">Find a new project</a>
+
+{{#each projectList}}
+
+<h3>{{title}}</h3>
+<p>Description: {{description}}</p>
+<p>Owner of this project: {{owner.username}}</p>
+<p>Current status: {{status}}</p>
+<p>Time needed per week: {{time_per_week}}</p>
+
+{{#if this.assignedToLoggedInWebDev}}
+<input type="button" value="Accepted" style="background-color: #00cc00; color: #ffffff;" />
+{{else}}
+<input type="button" value="Pending" style="background-color: #cc0000; color: #ffffff;" />
+{{/if}}
+
+{{/each}}

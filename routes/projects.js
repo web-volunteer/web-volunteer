@@ -74,8 +74,21 @@ router.get("/webdev/:id/projects", (req, res, next) => {
 /* Web Dev checking her projects */
   router.get("/webdev/:webdevID/myprojects", (req, res, next) => {
     console.log('Webdev needs to check her projects!');
-    Project.find({ applicants: req.params.webdevID }).then(projects => {
+    const webdevID = req.params.webdevID;
+    Project.find({ applicants: req.params.webdevID }).lean().then(projects => {
+      projects.forEach(project => {
+          console.log("webdev ID: ", webdevID);
+          console.log("index of thing: ", project.contributer.indexOf(webdevID));
+          if (project.contributer.indexOf(webdevID) !== -1) {
+            project.assignedToLoggedInWebDev = true;
+            
+          } else {
+            project.assignedToLoggedInWebDev = false;
+          }
+          project.time_per_week = ['<5hrs/week', '5-10hrs/week', '>10hrs/week'][project.time_per_week -1]
+      })
       console.log(projects);
+      res.render("webdev/myprojects", {projectList: projects, webdevID})
     }).catch(err => {
       console.log("Error while getting projects by applicant ID: ", err);
     })
