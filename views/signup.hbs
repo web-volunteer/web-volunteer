@@ -1,3 +1,10 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/style-loginsignup.css" />
+</head>
+
+<div class="login-container flex-container">
+
+
 <h2>Sign Up</h2>
 {{#if owner}} 
 <form action="/signupOwner" method="POST">
@@ -10,8 +17,10 @@
   <input type="password" name="password" required>
   <label for="email">E-mail address: </label>
   <input type="email" name="email" id="email" required>
-  <button type="submit">Sign Up</button>
+  <button class="btn" type="submit">Sign Up</button>
 </form>
 {{#if message}}
   <p style='color: red'>{{message}}</p>
 {{/if}}
+
+</div>

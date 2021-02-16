@@ -1,7 +1,38 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
 
+p {
+  line-height: 25px;
+  font-size: 16px;
+}
 
+h1 {
+  color: #19aaaa;
+}
+
+h2 {
+  color: #8573bf;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  font-weight: bold;
+  font-size: 18px;
+  color: #cbebe8;
+  background-color: #19aaaa;
+  padding: 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=style.css.map */

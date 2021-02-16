@@ -1,10 +1,18 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/style-loginsignup.css" />
+</head>
+
+<div class="login-container flex-container">
+
+
+
 <h2>Log In</h2>
 <form action="/login" method="POST">
   <label for="username">Username</label>
   <input type="text" name="username" required>
   <label for="">Password</label>
   <input type="password" name="password" required>
-  <button type="submit">Log In</button>
+  <button class="btn" type="submit">Log In</button>
 </form>
 {{#if message}}
   <p style='color: red'>{{message}}</p>
@@ -12,4 +20,6 @@
 <br><br><br>
 <div>
     <a href="/">Back to Main page</a>
+</div>
+
 </div>
