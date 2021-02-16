@@ -71,5 +71,10 @@ router.get("/webdev/:id/projects", (req, res, next) => {
   })
 });
 
+/* Web Dev checking her projects */
+  router.get("/webdev/:webdevID/myprojects", (req, res, next) => {
+    console.log('Webdev needs to check her projects!');
+    // Project.find({})
+  });
 
 module.exports = router;
