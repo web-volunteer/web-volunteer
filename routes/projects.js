@@ -74,7 +74,11 @@ router.get("/webdev/:id/projects", (req, res, next) => {
 /* Web Dev checking her projects */
   router.get("/webdev/:webdevID/myprojects", (req, res, next) => {
     console.log('Webdev needs to check her projects!');
-    // Project.find({})
+    Project.find({ applicants: req.params.webdevID }).then(projects => {
+      console.log(projects);
+    }).catch(err => {
+      console.log("Error while getting projects by applicant ID: ", err);
+    })
   });
 
 module.exports = router;
