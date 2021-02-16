@@ -64,6 +64,9 @@ app.use("/", webdev);
 const projects = require("./routes/projects");
 app.use("/", projects);
 
+const applications = require("./routes/applications");
+app.use("/", applications);
+
 const auth = require("./routes/auth");
 app.use("/", auth);
 

@@ -57,6 +57,19 @@ router.post("/:id/projects", (req, res, next) => {
     })
 })
 
+/* Web Dev finding a project */
+router.get("/webdev/:id/projects", (req, res, next) => {
+  const webdevID = req.params.id;
+  console.log('Hello webdev! Your ID is : ', webdevID);
+  console.log(typeof webdevID)
+  Project.find().populate('owner').then(projects => {
+    // console.log(projects);
+    res.render("projects-webdev", { projectList: projects, webdevID });
+  }).catch(err => {
+    console.log("Error while retrieving all the projects: ", err);
+    next();
+  })
+});
 
 
 module.exports = router;
