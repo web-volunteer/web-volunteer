@@ -75,7 +75,7 @@ router.get("/webdev/:id/projects", (req, res, next) => {
   router.get("/webdev/:webdevID/myprojects", (req, res, next) => {
     console.log('Webdev needs to check her projects!');
     const webdevID = req.params.webdevID;
-    Project.find({ applicants: req.params.webdevID }).lean().then(projects => {
+    Project.find({ applicants: webdevID }).populate('owner').lean().then(projects => {
       projects.forEach(project => {
           console.log("webdev ID: ", webdevID);
           console.log("index of thing: ", project.contributer.indexOf(webdevID));
