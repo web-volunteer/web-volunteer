@@ -1,7 +1,7 @@
 <h1>All projects</h1>
 {{#each projectList}}
 
-<h3>{{title}}</h3>
+<h2>{{title}}</h2>
 <p>Description: {{description}}</p>
 <p>Owner of this project: {{owner.username}}</p>
 <p>Current status: {{status}}</p>
@@ -10,6 +10,7 @@
 
 
 {{#if this.belongsToOwner}}
+
 
 {{!-- To be changed to link to special view for developer's profile --}}
 {{#each applicants}}
@@ -25,8 +26,8 @@
     <br>
 {{/each}}
 
-<a href="/owner/{{_id}}/projects/edit">Edit this project</a>
-<a href="/owner/{{_id}}/projects/delete">Delete this project</a>
+<a class="btn" href="/owner/{{_id}}/projects/edit">Edit this project</a>
+<a class="btn" href="/owner/{{_id}}/projects/delete">Delete this project</a>
 
 {{/if}}
 {{/each}}
