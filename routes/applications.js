@@ -27,7 +27,8 @@ router.post("/accept/:webdevID/:projectID", (req, res, next) => {
         {new: true} )
     .then(project => {
         console.log(project);
-        res.redirect(`/${project.owner}/projects-owner`)
+        //res.redirect(`/${project.owner}/projects-owner`)
+        res.redirect(`/owner/${project.owner}/projects/myprojects`);
     }).catch(err => {
         console.log("Error while finding project by ID after accept: ", err);
     })

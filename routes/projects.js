@@ -118,4 +118,29 @@ router.get("/webdev/:id/projects", (req, res, next) => {
     })
   });
 
+
+  router.get("/owner/:ownerID/projects/myprojects", (req, res, next) => {
+    const ownerID = req.params.ownerID;
+    console.log('ownerId', ownerID)
+    Project.find( { owner: ownerID } )
+      .populate('owner').populate('applicants')
+      .lean()
+      .then(projects => {
+        projects.forEach(project => {
+          console.log(project)
+          if (project.owner._id == ownerID) {
+            project.belongsToOwner = true;
+            
+          } else {
+            project.belongsToOwner = false;
+          }
+          project.time_per_week = ['<5hrs/week', '5-10hrs/week', '>10hrs/week'][project.time_per_week -1]
+        })
+        // console.log('projects log: ', projects)
+        
+        res.render("owner/projects/myprojects", { ownerId: ownerID, projectList: projects });
+      })
+    // res.render("owner/projects/myprojects");
+})
+
 module.exports = router;
