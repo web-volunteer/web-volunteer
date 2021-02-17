@@ -28,7 +28,7 @@ router.get("/:id/projects-owner", (req, res, next) => {
   
 });
 
-//to-do: display time correctly
+/* see all projects for project owner */
 router.post("/:id/projects-owner", (req, res, next) => {
   const { title, description, status, time } = req.body;
   const ownerId = req.params.id;
@@ -75,14 +75,26 @@ router.get("/webdev/:id/projects", (req, res, next) => {
   router.get("/webdev/:webdevID/myprojects", (req, res, next) => {
     console.log('Webdev needs to check her projects!');
     const webdevID = req.params.webdevID;
-    Project.find({ applicants: webdevID }).populate('owner').lean().then(projects => {
+    Project.find( {$or: [ {applicants: webdevID }, {contributer: webdevID} ]} ).populate('owner').lean().then(projects => {
       projects.forEach(project => {
-          console.log("webdev ID: ", webdevID);
-          console.log("index of thing: ", project.contributer.indexOf(webdevID));
-          if (project.contributer.indexOf(webdevID) !== -1) {
+          // console.log("webdev ID: ", typeof webdevID);
+          // console.log("index of thing: ", project.contributer.indexOf(webdevID));
+          // console.log(typeof project.contributer[0])
+          // if (project.contributer.indexOf(webdevID) !== -1) {
+          //   project.assignedToLoggedInWebDev = true;
+            
+          // } else {
+          //   project.assignedToLoggedInWebDev = false;
+          // }
+          // console.log("hey: ", project.contributer.findIndex(obj => {
+          //   return (obj == webdevID);
+          // }))
+          if ( project.contributer.findIndex(obj => {return (obj == webdevID);}) !== -1 ) 
+          {
             project.assignedToLoggedInWebDev = true;
             
-          } else {
+          } else 
+          {
             project.assignedToLoggedInWebDev = false;
           }
           project.time_per_week = ['<5hrs/week', '5-10hrs/week', '>10hrs/week'][project.time_per_week -1]
