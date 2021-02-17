@@ -2,6 +2,14 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-family: "Open Sans", sans-serif;
+  width: 100vh;
+  margin: 0 auto;
+  background-color: #c6ccf0;
+}
+
+.homepage-container {
+  background-color: #cbebe8;
+  text-align: center;
 }
 
 .navbar {
@@ -56,6 +64,10 @@ footer {
 
 footer p {
   font-size: 20px;
+}
+
+.logout-btn {
+  background-color: #8573bf;
 }
 
 /*# sourceMappingURL=style.css.map */
