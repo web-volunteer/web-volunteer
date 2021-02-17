@@ -18,9 +18,16 @@ router.get("/apply/:projectID/:webdevID/", (req, res, next) => {
 router.post("/accept/:webdevID/:projectID", (req, res, next) => {
     console.log("Accept");
     console.log(req.params.webdevID);
-    Project.findByIdAndUpdate(req.params.projectID, {"$push" : { "contributer": req.params.webdevID}, "$pull" : { "applicants": req.params.webdevID} }, {new: true} )
+    Project.findByIdAndUpdate(req.params.projectID, 
+        {
+            "$push" : { "contributer": req.params.webdevID}, 
+            "$pull" : { "applicants": req.params.webdevID},
+             status: "running"
+        },
+        {new: true} )
     .then(project => {
         console.log(project);
+        res.redirect(`/${project.owner}/projects-owner`)
     }).catch(err => {
         console.log("Error while finding project by ID after accept: ", err);
     })
