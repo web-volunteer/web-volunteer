@@ -35,13 +35,11 @@ const developerSchema = new Schema({
   },
   website: { 
     type: String,
-    unique: true,
     trim: true,
     lowercase: true
   },
   github: { 
     type: String,
-    unique: true,
     trim: true,
     lowercase: true
   },

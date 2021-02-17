@@ -23,7 +23,19 @@ const projectSchema = new Schema({
     type: Number,
     min: 0,
     max: 40
-  }
+  },
+  applicants: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Developer'
+    }
+  ],
+  rejected: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Developer'
+    }
+  ]
 },
 {
     timestamps: {

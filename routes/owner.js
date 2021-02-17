@@ -94,10 +94,6 @@ router.get('/owner/:id/projects/delete', (req, res) => {
 })
 
 
-//todo:
-router.get("/owner/projects/myprojects", (req, res, next) => {
-    res.render("owner/projects/myprojects");
-})
 
 
 

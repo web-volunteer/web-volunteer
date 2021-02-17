@@ -1,5 +1,38 @@
 <h2>View your projects</h2>
 
 
-<p><a class="btn" href="/owner/profile/myprofile">See your profile</a></p>
-<p><a class="btn" href="/projects">See other projects</a></p>
+
+<p><a class="btn" href="/owner/profile/{{ownerId}}/myprofile">See your profile</a></p>
+<p><a class="btn" href="/{{ownerId}}/projects-owner">See other projects</a></p>
+
+{{#each projectList}}
+
+<h3>{{title}}</h3>
+<p>Description: {{description}}</p>
+<p>Owner of this project: {{owner.username}}</p>
+<p>Current status: {{status}}</p>
+<p>Time needed per week: {{time_per_week}}</p>
+{{!-- <p>we are in line 9! {{belongsToOwner}}</p> --}}
+
+
+{{#if this.belongsToOwner}}
+
+{{!-- To be changed to link to special view for developer's profile --}}
+{{#each applicants}}
+    <a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>
+    {{!-- &emsp;<button style="background-color: #00cc00; color: #ffffff;">Accept</button>&emsp;<input type="button" value="Reject" style="background-color: #cc0000; color: #ffffff;" /> --}}
+    <form action="/accept/{{this._id}}/{{../_id}}" method="post">
+    <input type="submit" style="background-color: #00cc00; color: #ffffff;" name="accept" value="Accept" />
+    </form>
+    <form action="/reject/{{this._id}}/{{../_id}}" method="post">
+    <input type="submit" style="background-color: #cc0000; color: #ffffff;" name="reject" value="Reject" />
+    </form>    
+    <br>
+    <br>
+{{/each}}
+
+<a href="/owner/{{_id}}/projects/edit">Edit this project</a>
+<a href="/owner/{{_id}}/projects/delete">Delete this project</a>
+
+{{/if}}
+{{/each}}
