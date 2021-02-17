@@ -14,7 +14,13 @@
 {{#if this.assignedToLoggedInWebDev}}
 <input type="button" value="Accepted" style="background-color: #00cc00; color: #ffffff;" />
 {{else}}
+
+{{#if this.loggedInWebDevRejected}}
+<input type="button" value="Rejected" style="background-color: #cc0000; color: #ffffff;" />
+{{else}}
 <input type="button" value="Pending" style="background-color: #cc0000; color: #ffffff;" />
+{{/if}}
+
 {{/if}}
 
 {{/each}}

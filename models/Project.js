@@ -29,6 +29,12 @@ const projectSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Developer'
     }
+  ],
+  rejected: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Developer'
+    }
   ]
 },
 {
