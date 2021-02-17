@@ -2,10 +2,10 @@
 {{#each projectList}}
 
 <h2>{{title}}</h2>
-<p>Description: {{description}}</p>
-<p>Owner of this project: {{owner.username}}</p>
-<p>Current status: {{status}}</p>
-<p>Time needed per week: {{time_per_week}}</p>
+<p> <strong> Description:</strong> {{description}}</p>
+<p><strong> Owner of this project:</strong> {{owner.username}}</p>
+<p><strong> Current status: </strong>{{status}}</p>
+<p><strong> Time needed per week:</strong> {{time_per_week}}</p>
 {{!-- <p>we are in line 9! {{belongsToOwner}}</p> --}}
 
 
@@ -15,13 +15,12 @@
 {{!-- To be changed to link to special view for developer's profile --}}
 {{#each applicants}}
 <a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>
-{{!-- &emsp;<button style="background-color: #00cc00; color: #ffffff;">Accept</button>&emsp;<input type="button"
-    value="Reject" style="background-color: #cc0000; color: #ffffff;" /> --}}
+
 <form action="/accept/{{this._id}}/{{../_id}}" method="post">
-    <input type="submit" style="background-color: #00cc00; color: #ffffff;" name="accept" value="Accept" />
+    <input class="btn" type="submit" style="background-color: #00cc00; color: #ffffff;" name="accept" value="Accept" />
 </form>
 <form action="/reject/{{this._id}}/{{../_id}}" method="post">
-    <input type="submit" style="background-color: #cc0000; color: #ffffff;" name="reject" value="Reject" />
+    <input class="btn" type="submit" style="background-color: #cc0000; color: #ffffff;" name="reject" value="Reject" />
 </form>
 <br>
 <br>

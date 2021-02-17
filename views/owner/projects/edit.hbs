@@ -1,7 +1,7 @@
 <h2>Edit your project</h2>
 
 {{#with project}}
-<form action="/{{_id}}/projects" method="POST">
+<form class="flex-form" action="/{{_id}}/projects" method="POST">
 
     <label for="title">Title of your project: </label>
     <input type="text" name="title" id="title" placeholder="Choose a title" value="{{title}}">
