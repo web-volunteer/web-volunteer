@@ -3,14 +3,15 @@
 
 <h2>{{title}}</h2>
 <p>Description: {{description}}</p>
-<p>Owner of this project: {{owner._id}}</p>
+<p>Owner of this project: {{owner.username}}</p>
 <p>Current status: {{status}}</p>
 <p>Time needed per week: {{time_per_week}}</p>
 {{!-- <p>we are in line 9! {{belongsToOwner}}</p> --}}
 
 {{#if this.belongsToOwner}}
+
 <a class="btn" href="/owner/{{_id}}/projects/edit">Edit this project</a>
-<a class="btn" href="/owner/{{owner._id}}/projects/delete">Delete this project</a>
+<a class="btn" href="/owner/{{_id}}/projects/delete">Delete this project</a>
 
 {{/if}}
 {{/each}}
