@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Owner = require('../models/Owner');
 const Project = require('../models/Project');
+const { uploader, cloudinary } = require('../config/cloundinary');
 
 
 router.get("/owner", (req, res, next) => {
@@ -35,8 +36,11 @@ router.get("/owner/profile/:id/edit", (req, res, next) => {
     })
 })
 
-router.post("/owner/profile/:id/edit", (req, res, next) => {
+router.post("/owner/profile/:id/edit", uploader.single('photo'), (req, res, next) => {
   const ownerId = req.params.id;
+  const imgPath = req.file.path;
+  const imgName = req.file.originalname;
+  const publicId = req.file.filename;
   const {
     nameOrg,
     firstName,
@@ -53,6 +57,9 @@ router.post("/owner/profile/:id/edit", (req, res, next) => {
     firstName,
     lastName,
     email,
+    imgPath,
+    imgName,
+    publicId,
     website,
     location,
     languages,

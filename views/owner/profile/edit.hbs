@@ -3,7 +3,7 @@
 <h2>Edit your profile</h2>
 {{#with owner}}
 
-<form action="/owner/profile/{{this._id}}/edit" method="POST">
+<form action="/owner/profile/{{this._id}}/edit" method="POST" enctype="multipart/form-data">
 
     <label for="username">Username: </label>
     <input type="username" name="username" id="username" value="{{username}}">
@@ -19,6 +19,9 @@
 
     <label for="email">E-mail: </label>
     <input type="email" name="email" id="email" value="{{email}}">
+
+    <label for="photo">Photo: </label>
+    <input type="file" name="photo" id="photo">
 
     <label for="website">Website: </label>
     <input type="url" name="website" id="website" placeholder="optional" value="{{website}}">

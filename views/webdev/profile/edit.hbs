@@ -2,7 +2,7 @@
 
 {{!-- to do: dynamic ID --}}
 
-<form action="/webdev/profile/{{developer._id}}/edit" method="POST">
+<form action="/webdev/profile/{{developer._id}}/edit" method="POST" enctype="multipart/form-data">
 
     <br>
 
@@ -18,6 +18,11 @@
 
     <label for="email">E-mail address: </label>
     <input type="email" name="email" id="email" required value={{developer.email}} >
+
+    <br><br><br>
+    
+    <label for="photo">Photo: </label>
+    <input type="file" name="photo" id="photo">
 
     {{!-- City partial --}}
     <br><br><br>

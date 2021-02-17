@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Developer = require('../models/Developer');
 const Project = require('../models/Project');
+const { uploader, cloudinary } = require('../config/cloundinary');
 
 
 router.get("/webdev/profile/:id/myprofile", (req, res, next) => {
@@ -55,8 +56,11 @@ router.get("/webdev/myprojects", (req, res, next) => {
   res.render("webdev/myprojects");
 });
 
-router.post('/webdev/profile/:id/edit', (req, res, next) => {
+router.post('/webdev/profile/:id/edit', uploader.single('photo'), (req, res, next) => {
   console.log(req.body);
+  const imgPath = req.file.path;
+  const imgName = req.file.originalname;
+  const publicId = req.file.filename;
   const { firstname,
           lastname,
           email,
@@ -74,6 +78,9 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
   Developer.findByIdAndUpdate(req.params.id, { firstname: firstname,
                                                lastname: lastname,
                                                email: email,
+                                               imgPath: imgPath,
+                                               imgName: imgName,
+                                               publicId, publicId,
                                                country: country,
                                                city, city,
                                                primarylanguage: primarylanguage,
