@@ -63,7 +63,19 @@ router.get("/webdev/:id/projects", (req, res, next) => {
   console.log('Hello webdev! Your ID is : ', webdevID);
   console.log(typeof webdevID)
   Project.find().populate('owner').then(projects => {
-    // console.log(projects);
+
+    projects.forEach(project => {
+      if ( project.contributer.findIndex(obj => {return (obj == webdevID);}) == -1 
+          && project.applicants.findIndex(obj => {return (obj == webdevID);}) == -1) 
+      {
+        project.displayApplyLink = true;
+        
+      } else 
+      {
+        project.displayApplyLink = false;
+      }
+      project.time_per_week = ['<5hrs/week', '5-10hrs/week', '>10hrs/week'][project.time_per_week -1]
+  })
     res.render("projects-webdev", { projectList: projects, webdevID });
   }).catch(err => {
     console.log("Error while retrieving all the projects: ", err);

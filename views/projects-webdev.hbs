@@ -9,5 +9,9 @@
 <p>Current status: {{status}}</p>
 <p>Time needed per week: {{time_per_week}}</p>
 
+{{#if displayApplyLink}}
 <a href="/apply/{{_id}}/{{../webdevID}}/">Apply to this project</a>
+{{else}}
+<p><strong>Applied!</strong></p>
+{{/if}}
 {{/each}}
