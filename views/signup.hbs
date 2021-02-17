@@ -5,22 +5,23 @@
 <div class="login-container flex-container">
 
 
-<h2>Sign Up</h2>
-{{#if owner}} 
-<form action="/signupOwner" method="POST">
-{{else}}
-<form action="/signupWebDev" method="POST">
-{{/if}}
-  <label for="username">Username</label>
-  <input type="text" name="username" required>
-  <label for="">Password</label>
-  <input type="password" name="password" required>
-  <label for="email">E-mail address: </label>
-  <input type="email" name="email" id="email" required>
-  <button class="btn" type="submit">Sign Up</button>
-</form>
-{{#if message}}
-  <p style='color: red'>{{message}}</p>
-{{/if}}
+  <h2>Sign Up</h2>
+  {{#if owner}}
+  <form action="/signupOwner" method="POST">
+    {{else}}
+    <form action="/signupWebDev" method="POST">
+      {{/if}}
+      <label for="username">Username</label>
+      <input type="text" name="username" required>
+      <label for="">Password</label>
+      <input type="password" name="password" required>
+      <label for="email">E-mail address: </label>
+      <input type="email" name="email" id="email" required>
+      <button class="btn" type="submit">Sign Up</button>
+    </form>
+    {{#if message}}
+    <p style='color: red'>{{message}}</p>
+    {{/if}}
 
+    <a class="btn back-btn" href="/">Back to homepage</a>
 </div>

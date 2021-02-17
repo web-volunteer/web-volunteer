@@ -4,6 +4,13 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.navbar {
+  color: #cbebe8;
+  background-color: #19aaaa;
+  padding: 8px;
+  text-align: right;
+}
+
 p {
   line-height: 25px;
   font-size: 16px;
@@ -38,4 +45,17 @@ h2 {
 .back-btn {
   background-color: #8573bf;
 }
+
+footer {
+  color: #cbebe8;
+  background-color: #19aaaa;
+  padding: 1px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */
