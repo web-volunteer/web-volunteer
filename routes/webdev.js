@@ -18,7 +18,13 @@ router.get("/webdev/profile/:id/myprofile", (req, res, next) => {
 });
 
 router.get("/webdev/", (req, res, next) => {
-  res.render("webdev");
+  const webdevID = req.session.user._id;
+  Developer.findById(webdevID)
+    .then(developer => {
+    res.render("webdev", {webdev: developer});
+  }).catch(err => {
+      console.log(`error from get route /webdev -->`, err);
+  })
 });
 
 router.get("/webdev/profile/:id/edit", (req, res, next) => {
