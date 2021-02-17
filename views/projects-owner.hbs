@@ -1,7 +1,7 @@
 <h1>All projects</h1>
 {{#each projectList}}
 
-<h3>{{title}}</h3>
+<h2>{{title}}</h2>
 <p>Description: {{description}}</p>
 <p>Owner of this project: {{owner._id}}</p>
 <p>Current status: {{status}}</p>
@@ -9,8 +9,8 @@
 {{!-- <p>we are in line 9! {{belongsToOwner}}</p> --}}
 
 {{#if this.belongsToOwner}}
-<a href="/owner/{{_id}}/projects/edit">Edit this project</a>
-<a href="/owner/{{owner._id}}/projects/delete">Delete this project</a>
+<a class="btn" href="/owner/{{_id}}/projects/edit">Edit this project</a>
+<a class="btn" href="/owner/{{owner._id}}/projects/delete">Delete this project</a>
 
 {{/if}}
 {{/each}}
