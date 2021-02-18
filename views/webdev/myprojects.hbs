@@ -1,28 +1,35 @@
 <h2>My projects</h2>
 
 
-{{#each projectList}}
+<div class="projects-container flex-form">
+    <div class="projects-list">
+        {{#each projectList}}
+        <div class="flex-form project">
+            <h3 class="project-title">{{title}}</h3>
+            <div class="project-text">
+                <p>Description: {{description}}</p>
+                <p>Owner of this project: {{owner.username}}</p>
+                <p>Current status: {{status}}</p>
+                <p>Time needed per week: {{time_per_week}}</p>
+            </div>
+            <div class="project-status">
+                {{#if this.assignedToLoggedInWebDev}}
+                <input type="button" value="Accepted" style="background-color: #00cc00; color: #ffffff;" />
+                {{else}}
 
-<h3>{{title}}</h3>
-<p>Description: {{description}}</p>
-<p>Owner of this project: {{owner.username}}</p>
-<p>Current status: {{status}}</p>
-<p>Time needed per week: {{time_per_week}}</p>
+                {{#if this.loggedInWebDevRejected}}
+                <input type="button" value="Rejected" style="background-color: #cc0000; color: #ffffff;" />
+                {{else}}
+                <input type="button" value="Pending" style="background-color: #cc0000; color: #ffffff;" />
+                {{/if}}
 
-{{#if this.assignedToLoggedInWebDev}}
-<input type="button" value="Accepted" style="background-color: #00cc00; color: #ffffff;" />
-{{else}}
-
-{{#if this.loggedInWebDevRejected}}
-<input type="button" value="Rejected" style="background-color: #cc0000; color: #ffffff;" />
-{{else}}
-<input type="button" value="Pending" style="background-color: #cc0000; color: #ffffff;" />
-{{/if}}
-
-{{/if}}
-
-{{/each}}
-
-
-<a class="btn" href="/webdev/{{webdevID}}/projects">Find a new project</a>
-<p><a class="btn back-btn" href="/webdev/">Go back</a></p>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="project-buttons">
+        <a class="btn" href="/webdev/{{webdevID}}/projects">Find a new project</a>
+        <p><a class="btn back-btn" href="/webdev/">Go back</a></p>
+    </div>
+</div>  
