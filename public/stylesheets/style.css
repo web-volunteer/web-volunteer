@@ -153,7 +153,7 @@ footer p {
   /* flex-wrap: wrap; */
   align-items: center;
   font-size: 17px;
-  /* justify-content: space-around; */
+  justify-content: space-around;
 }
 
 .project {
@@ -246,6 +246,7 @@ footer p {
 }
 
 .project-owner-edit-delete {
-  margin: 20px 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 /*# sourceMappingURL=style.css.map */
