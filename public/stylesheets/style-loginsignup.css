@@ -34,3 +34,9 @@ body {
 footer {
   display: none;
 }
+
+.signup-field label {
+  width: 23%;
+  text-align: start;
+  display: inline-block;
+}
