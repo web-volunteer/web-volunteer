@@ -14,7 +14,7 @@
 
 {{!-- To be changed to link to special view for developer's profile --}}
 {{#each applicants}}
-<div class="flex-container btn-container">
+{{!-- <div class="flex-container btn-container"> --}}
 
 
     <p><a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a></p>
@@ -25,7 +25,7 @@
     <form action="/reject/{{this._id}}/{{../_id}}" method="post">
         <input class="reject-btn" type="submit" name="reject" value="Reject" />
     </form>
-</div>
+{{!-- </div> --}}
 <br>
 
 <br>
