@@ -1,42 +1,45 @@
 <h1>All projects</h1>
-{{#each projectList}}
 
-<h2>{{title}}</h2>
-<p> <strong> Description:</strong> {{description}}</p>
-<p><strong> Owner of this project:</strong> {{owner.username}}</p>
-<p><strong> Current status: </strong>{{status}}</p>
-<p><strong> Time needed per week:</strong> {{time_per_week}}</p>
-{{!-- <p>we are in line 9! {{belongsToOwner}}</p> --}}
+<div class="projects-container flex-project">
+    <div class="projects-list">
+        {{#each projectList}}
+        <div class="flex-project project-owner">
+            <h3 class="project-owner-title">{{title}}</h3>
+            <div class="project-owner-text">
+                <p>Description:{{description}}</p>
+                <p>Owner of this project:{{owner.username}}</p>
+                <p>Current status:{{status}}</p>
+                <p>Time needed per week:{{time_per_week}}</p>
+            </div>
+            {{#if this.belongsToOwner}}
+            <div class="project-owner-status">
+                <div class="accept-reject-list">
+                    {{#each applicants}}
+                    <div class="accept-reject-btns flex-container">
+                        <a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>
+                        <form action="/accept/{{this._id}}/{{../_id}}" method="post">
+                            <input class="accept-btn" type="submit" name="accept" value="Accept"/>
+                        </form>
+                        <form action="/reject/{{this._id}}/{{../_id}}" method="post">
+                            <input class="reject-btn" type="submit" name="reject" value="Reject"/>
+                        </form>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="project-owner-edit-delete">
+                <a class="btn" href="/owner/{{_id}}/projects/edit">Edit this project</a>
+                <a class="btn" href="/owner/{{_id}}/projects/delete">Delete this project</a>
+            </div>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+    <div class="project-buttons">
+        <p><a class="btn" href="/owner/{{ownerId}}/projects/create">Create a project</a></p>
+        <p><a class="btn back-btn" href="/owner">Go back</a></p>
+    </div>
+</div>
 
 
-{{#if this.belongsToOwner}}
 
-
-{{!-- To be changed to link to special view for developer's profile --}}
-{{#each applicants}}
-{{!-- <div class="flex-container btn-container"> --}}
-
-
-    <p><a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a></p>
-
-    <form action="/accept/{{this._id}}/{{../_id}}" method="post">
-        <input class="accept-btn" type="submit" name="accept" value="Accept" />
-    </form>
-    <form action="/reject/{{this._id}}/{{../_id}}" method="post">
-        <input class="reject-btn" type="submit" name="reject" value="Reject" />
-    </form>
-{{!-- </div> --}}
-<br>
-
-<br>
-{{/each}}
-
-<a class="btn" href="/owner/{{_id}}/projects/edit">Edit this project</a>
-<a class="btn" href="/owner/{{_id}}/projects/delete">Delete this project</a>
-
-{{/if}}
-{{/each}}
-
-<p><a class="btn" href="/owner/{{ownerId}}/projects/create">Create a project</a></p>
-
-<p><a class="btn back-btn" href="/owner">Go back</a></p>

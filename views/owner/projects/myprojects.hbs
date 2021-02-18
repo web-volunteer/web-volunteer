@@ -3,29 +3,35 @@
 <div class="projects-container flex-project">
     <div class="projects-list">
         {{#each projectList}}
-        <div class="flex-project project">
-            <h3 class="project-title">{{title}}</h3>
-            <div class="project-text">
+        <div class="flex-project project-owner">
+            <h3 class="project-owner-title">{{title}}</h3>
+            <div class="project-owner-text">
                 <p>Description: {{description}}</p>
                 <p>Owner of this project: {{owner.username}}</p>
                 <p>Current status: {{status}}</p>
                 <p>Time needed per week: {{time_per_week}}</p>
             </div>
-            <div class="project-status">
             {{#if this.belongsToOwner}}
-                {{#each applicants}}
-                <a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>
-                <form action="/accept/{{this._id}}/{{../_id}}" method="post">
-                    <input type="submit" style="background-color: #00cc00; color: #ffffff;" name="accept" value="Accept" />
-                </form>
-                <form action="/reject/{{this._id}}/{{../_id}}" method="post">
-                    <input type="submit" style="background-color: #cc0000; color: #ffffff;" name="reject" value="Reject" />
-                </form>
-                {{/each}}
+            <div class="project-owner-status">
+                <div class="accept-reject-list">
+                    {{#each applicants}}
+                    <div class="accept-reject-btns flex-container">
+                        <a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>
+                        <form action="/accept/{{this._id}}/{{../_id}}" method="post">
+                            <input class="accept-btn" type="submit"  name="accept" value="Accept" />
+                        </form>
+                        <form action="/reject/{{this._id}}/{{../_id}}" method="post">
+                            <input class="reject-btn" type="submit"  name="reject" value="Reject" />
+                        </form>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="project-owner-edit-delete">
                 <a class="btn" href="/owner/{{_id}}/projects/edit">Edit</a>
                 <a class="btn" href="/owner/{{_id}}/projects/delete">Delete</a>
-                {{/if}}
             </div>
+            {{/if}}
         </div>
         {{/each}}
     </div>
