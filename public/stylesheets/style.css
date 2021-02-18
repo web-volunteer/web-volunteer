@@ -99,6 +99,8 @@ footer p {
   width: 350px;
   border: 1px solid #bfbfbf;
   margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .project-title {
