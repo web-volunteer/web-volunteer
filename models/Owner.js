@@ -16,13 +16,14 @@ const ownerSchema = new Schema({
   imgPath: String,
   imgName: String,
   publicId: String,
+  website: String,
   nameOrganisation: String,
   firstName: String,
   lastName: String,
-  location: String,
-  languages: [{
-    type: String
-  }],
+  country: String,
+  city: String,
+  primarylanguage: String,
+  secondarylanguage: String,
   category: {
     type: String,
     enum: ['NGO', 'Individual', 'Association', 'Educational institution', 'Startup', 'Company', 'Social Services', 'other']

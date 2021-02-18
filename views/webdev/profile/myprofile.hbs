@@ -1,36 +1,49 @@
 <h2>Your profile</h2>
 
-{{!-- render profile via web dev ID here --}}
-<img src="{{developer.imgPath}}" alt="photo for {{developer.username}}" width="200" height="300">
+<div class="flex-container profile-container">
 
-<p><strong>First name: </strong> {{developer.firstname}}</p>
 
-<p><strong>Last name: </strong> {{developer.lastname}}</p>
+    <div>
+        <img class="profile-img" src="{{developer.imgPath}}" alt="photo for {{developer.username}}">
+        <p><strong> Username: </strong>{{developer.username}}</p>
+        <p><strong>First name: </strong> {{developer.firstname}}</p>
 
-<p><strong>Email: </strong> {{developer.email}}</p>
+        <p><strong>Last name: </strong> {{developer.lastname}}</p>
+        <p><strong>Email: </strong> {{developer.email}}</p>
+    </div>
 
-<p><strong>Country: </strong> {{developer.country}}</p>
+    <div class="flex-container">
 
-<p><strong>City: </strong> {{developer.city}}</p>
+        <div>
 
-<p><strong>Primary language: </strong> {{developer.primarylanguage}}</p>
+            <p><strong>Country: </strong> {{developer.country}}</p>
 
-<p><strong>Secondary language: </strong> {{developer.secondarylanguage}}</p>
+            <p><strong>City: </strong> {{developer.city}}</p>
 
-<p><strong>Stack: </strong> {{developer.stack}}</p>
+            <p><strong>Primary language: </strong> {{developer.primarylanguage}}</p>
 
-<p><strong>Availability: </strong> {{developer.time}}</p>
+            <p><strong>Secondary language: </strong> {{developer.secondarylanguage}}</p>
 
-<p><strong>Experience: </strong> {{developer.experience}}</p>
+            <p><strong>Stack: </strong> {{developer.stack}}</p>
 
-<p><strong>Website: </strong> {{developer.website}}</p>
+            <p><strong>Availability: </strong> {{developer.time}}</p>
 
-<p><strong>GitHub: </strong> {{developer.github}}</p>
+            <p><strong>Experience: </strong> {{developer.experience}}</p>
 
-<p><strong>Description: </strong> {{developer.description}}</p>
+            <p><strong>Website: </strong> {{developer.website}}</p>
+
+            <p><strong>GitHub: </strong> {{developer.github}}</p>
+
+            <p><strong>Description: </strong> {{developer.description}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="flex-container btn-container">
 
 <p><a class="btn" href="/webdev/profile/{{ developer._id}}/edit">Edit your profile</a></p>
 
 <p><a class="btn" href="/webdev/{{ developer._id}}/projects">Find a project</a></p>
 
 <p><a class="btn back-btn" href="/webdev/">Go back</a></p>
+</div>

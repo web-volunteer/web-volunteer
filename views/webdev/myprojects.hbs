@@ -1,6 +1,5 @@
 <h2>My projects</h2>
 
-
 <div class="projects-container flex-project">
     <div class="projects-list">
         {{#each projectList}}
@@ -14,13 +13,13 @@
             </div>
             <div class="project-status">
                 {{#if this.assignedToLoggedInWebDev}}
-                <input class="btn" type="button" value="Accepted" style="background-color: #56dd56; color: #cbebe8;" />
+                <input class="accept-btn" type="button" value="Accepted"/>
                 {{else}}
 
                 {{#if this.loggedInWebDevRejected}}
-                <input class="btn" type="button" value="Rejected" style="background-color: #f34545; color: #cbebe8;" />
+                <input class="reject-btn" type="button" value="Rejected"/>
                 {{else}}
-                <input class="btn" type="button" value="Pending" style="background-color: #f3972e; color: #cbebe8;" />
+                <input class="reject-btn" type="button" value="Pending"/>
                 {{/if}}
 
                 {{/if}}

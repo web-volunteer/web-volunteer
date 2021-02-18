@@ -1,21 +1,40 @@
 <h1>Your profile</h1>
 
-{{#with owner}}
-<img src="{{imgPath}}" alt="photo for {{username}}" width="200" height="300">
-<p><strong> Username: </strong>{{username}}</p>
-<p><strong> Name of your organisation: </strong>{{nameOrganisation}}</p>
-<p><strong> First Name:</strong> {{firstName}}</p>
-<p><strong>Last Name: </strong>{{lastName}}</p>
-<p><strong>E-mail: </strong>{{email}}</p>
-<p><strong>Your website: </strong>{{website}}</p>
-<p><strong>Your location: </strong>{{location}}</p>
-<p><strong>Your languages: </strong>{{languages}}</p>
-<p><strong>Self-description: </strong>{{description}}</p>
-<p><strong>Category: </strong>{{category}}</p>
+<div class="flex-container profile-container">
 
-<p><a class="btn" href="/owner/profile/{{this._id}}/edit">Edit your profile</a></p>
-<p><a class="btn" href="/owner/{{this._id}}/projects/myprojects">See your projects</a></p>
 
-<p><a class="btn back-btn" href="/owner">Go back</a></p>
+    {{#with owner}}
+    <div>
+        <img class="profile-img" src="{{imgPath}}" alt="photo for {{username}}">
+        <p><strong> Username: </strong>{{username}}</p>
+        <p><strong> Name of your organisation: </strong>{{nameOrganisation}}</p>
+        <p><strong> First Name:</strong> {{firstName}}</p>
+        <p><strong>Last Name: </strong>{{lastName}}</p>
+    </div>
+
+    <div class="flex-container">
+
+        <div>
+            <p><strong>E-mail: </strong>{{email}}</p>
+            <p><strong>Your website: </strong>{{website}}</p>
+            <p><strong>Country: </strong> {{country}}</p>
+
+            <p><strong>City: </strong> {{city}}</p>
+
+            <p><strong>Primary language: </strong> {{primarylanguage}}</p>
+
+            <p><strong>Secondary language: </strong> {{secondarylanguage}}</p>
+            <p><strong>Self-description: </strong>{{description}}</p>
+            <p><strong>Category: </strong>{{category}}</p>
+        </div>
+    </div>
+</div>
+<div class="flex-container btn-container">
+
+    <p><a class="btn" href="/owner/profile/{{this._id}}/edit">Edit your profile</a></p>
+    <p><a class="btn" href="/owner/{{this._id}}/projects/myprojects">See your projects</a></p>
+
+    <p><a class="btn back-btn" href="/owner">Go back</a></p>
+</div>
 
 {{/with}}

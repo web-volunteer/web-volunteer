@@ -25,6 +25,11 @@ p {
   font-size: 16px;
 }
 
+.p-index-pages {
+  margin: 70px;
+  text-align: justify;
+}
+
 h1 {
   color: #19aaaa;
 }
@@ -38,6 +43,20 @@ h2 {
   justify-content: space-between;
   align-items: center;
 }
+
+.profile-img {
+  width: 300px;
+}
+
+.profile-container {
+  justify-content: space-evenly;
+  text-align: start;
+}
+
+.btn-container {
+  justify-content:center;
+}
+
 
 .flex-form {
   display: flex;
@@ -71,6 +90,35 @@ textarea {
   display: inline-block;
   cursor: pointer;
   margin: 5px;
+}
+
+
+.accept-btn {
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #4caf50;
+   color: #cbebe8;
+   padding: 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px;
+      border: none;
+}
+
+.reject-btn {
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #ff0000cc;
+   color: #cbebe8;
+   padding: 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px;
+      border: none;
 }
 
 .back-btn {

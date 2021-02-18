@@ -1,8 +1,18 @@
 {{#with owner}}
 <h1>Welcome {{username}}!</h1>
-<p>What would you like to do?</p>
-<p><a class="btn" href="/owner/profile/{{this._id}}/myprofile">See your profile</a></p>
-<p><a class="btn" href="/owner/{{this._id}}/projects/myprojects">See your projects</a></p>
-<p><a class="btn" href="/{{this._id}}/projects-owner">See all projects</a></p>
-<p><a class="btn" href="/owner/{{this._id}}/projects/create">Create a project</a></p>
+<h2>What would you like to do?</h2>
+<p class="p-index-pages">In these times we can collaborate all over the globe and work on projects together. Thus, we can help a lot of
+    people while improving our own skills. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+    elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+    accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+    amet.</p>
+
+<div class="flex-container btn-container">
+    <p><a class="btn" href="/owner/profile/{{this._id}}/myprofile">See your profile</a></p>
+    <p><a class="btn" href="/owner/{{this._id}}/projects/myprojects">See your projects</a></p>
+    <p><a class="btn" href="/{{this._id}}/projects-owner">See all projects</a></p>
+    <p><a class="btn" href="/owner/{{this._id}}/projects/create">Create a project</a></p>
+</div>
 {{/with}}

@@ -35,14 +35,30 @@
         <label for="website">Website: </label>
         <input type="url" name="website" id="website" placeholder="optional" value="{{website}}">
     </div>
+    
     <div class="form-field">
-        <label for="location">Your location: </label>
-        <input type="text" name="location" id="location" placeholder="city, country" value="{{location}}">
+        <label for="country">Country: </label>
+    {{> locationPartial country}}
     </div>
+    
     <div class="form-field">
-        <label for="languages">Languages: </label>
-        <input type="text" name="languages" id="languages" placeholder="Enter languages you speak" value="{{languages}}">
+    <label for="city">City: </label>
+    <input type="text" name="city" id="city" value={{city}}>
     </div>
+    
+    <div class="form-field">
+       <label for="primarylanguage">Primary language: </label>
+    <select id="primarylanguage" name="primarylanguage">
+        {{> languagePartial}}
+    </select>
+    </div>
+    
+    <div class="form-field">
+<label for="secondarylanguage">Secondary language: </label>
+<select id="secondarylanguage" name="secondarylanguage">
+{{> languagePartial}}</select>
+    </div>
+    
     <div class="form-field">
         <label for="description">Description: </label>
         <textarea name="description" id="description" rows="4" cols="40"
@@ -62,6 +78,7 @@
         </select>
     </div>
 </div>
+
     <button class="btn" type="submit">Edit</button>
 </form>
 
