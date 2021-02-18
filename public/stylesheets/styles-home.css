@@ -40,6 +40,14 @@ body {
   height: 300px;
 }
 
+.intro-box h2 {
+ height: 15%;
+}
+
+
+.intro-box p {
+  height: 40%;
+ }
 
 p {
   margin: 30px 0;
