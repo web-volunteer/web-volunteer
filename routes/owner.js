@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Owner = require('../models/Owner');
 const Project = require('../models/Project');
+const { uploader, cloudinary } = require('../config/cloundinary');
 
 
 router.get("/owner", (req, res, next) => {
@@ -35,8 +36,13 @@ router.get("/owner/profile/:id/edit", (req, res, next) => {
     })
 })
 
-router.post("/owner/profile/:id/edit", (req, res, next) => {
+router.post("/owner/profile/:id/edit", uploader.single('photo'), (req, res, next) => {
   const ownerId = req.params.id;
+
+  let imgPath = (req.file)? req.file.path : null;
+  let imgName = (req.file)? req.file.originalname : null;
+  let publicId = (req.file)? req.file.filename : null;
+
   const {
     nameOrg,
     firstName,
@@ -53,13 +59,27 @@ router.post("/owner/profile/:id/edit", (req, res, next) => {
     firstName,
     lastName,
     email,
+    // imgPath,
+    // imgName,
+    // publicId,
     website,
     location,
     languages,
     description,
     category
-  }).then(() => {
-    res.redirect(`/owner/profile/${ownerId}/myprofile`);
+  }).then((owner) => {
+      if(imgPath !== null) {
+        Owner.findByIdAndUpdate(req.params.id, {
+          imgPath: imgPath,
+          imgName: imgName,
+          publicId, publicId
+        }).then(()=> {
+          res.redirect(`/owner/profile/${ownerId}/myprofile`);;
+        })
+      } else {
+        res.redirect(`/owner/profile/${ownerId}/myprofile`);
+      }
+    // res.redirect(`/owner/profile/${ownerId}/myprofile`);
   })
 })
 

@@ -2,9 +2,10 @@
 
 {{!-- to do: dynamic ID --}}
 
-<form class="flex-form" action="/webdev/profile/{{developer._id}}/edit" method="POST">
-    <div class="form-field">
 
+<form class="flex-form" action="/webdev/profile/{{developer._id}}/edit" method="POST" enctype="multipart/form-data">
+
+    <div class="form-field">
         <label for="firstname">First Name: </label>
         <input type="text" name="firstname" id="firstname" value={{developer.firstname}}>
     </div>
@@ -20,6 +21,11 @@
         <label for="email">E-mail address: </label>
         <input type="email" name="email" id="email" required value={{developer.email}}>
     </div>
+
+    <br><br><br>
+    
+    <label for="photo">Photo: </label>
+    <input type="file" name="photo" id="photo">
 
     {{!-- City partial --}}
 

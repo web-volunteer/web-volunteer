@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Developer = require('../models/Developer');
 const Project = require('../models/Project');
+const { uploader, cloudinary } = require('../config/cloundinary');
 
 
 router.get("/webdev/profile/:id/myprofile", (req, res, next) => {
@@ -55,8 +56,15 @@ router.get("/webdev/myprojects", (req, res, next) => {
   res.render("webdev/myprojects");
 });
 
-router.post('/webdev/profile/:id/edit', (req, res, next) => {
-  console.log(req.body);
+router.post('/webdev/profile/:id/edit', uploader.single('photo'), (req, res, next) => {
+  console.log(req.file);
+  let imgPath = (req.file)? req.file.path : null;
+  let imgName = (req.file)? req.file.originalname : null;
+  let publicId = (req.file)? req.file.filename : null;
+  // let imgPath = req.file.path;
+  // let imgName = req.file.originalname;
+  // let publicId = req.file.filename;
+
   const { firstname,
           lastname,
           email,
@@ -74,6 +82,9 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
   Developer.findByIdAndUpdate(req.params.id, { firstname: firstname,
                                                lastname: lastname,
                                                email: email,
+                                              //  imgPath: imgPath,
+                                              //  imgName: imgName,
+                                              //  publicId, publicId,
                                                country: country,
                                                city, city,
                                                primarylanguage: primarylanguage,
@@ -85,8 +96,18 @@ router.post('/webdev/profile/:id/edit', (req, res, next) => {
                                                github: github,
                                                description: description
                                                })
-    .then(() => {
-      res.redirect(`/webdev/profile/${req.params.id}/myprofile`);
+    .then((developer) => {
+      if(imgPath !== null) {
+        Developer.findByIdAndUpdate(req.params.id, {
+          imgPath: imgPath,
+          imgName: imgName,
+          publicId, publicId
+        }).then(()=> {
+          res.redirect(`/webdev/profile/${req.params.id}/myprofile`);
+        })
+      } else {
+        res.redirect(`/webdev/profile/${req.params.id}/myprofile`);
+      }
     })
     .catch(err => {
       console.log("Error while finding a webdev by id and updating: ", err);

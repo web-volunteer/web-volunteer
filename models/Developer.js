@@ -14,6 +14,9 @@ const developerSchema = new Schema({
     trim: true,
     lowercase: true
   },
+  imgPath: String,
+  imgName: String,
+  publicId: String,
   country: String,
   city: String,
   primarylanguage: String,
