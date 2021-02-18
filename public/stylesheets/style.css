@@ -167,16 +167,19 @@ footer p {
 }
 
 .project-title {
-  height: 50px;
+  /* height: 50px; */
+  height: 10%
 }
 
 .project-text {
-  height: 200px;
+  /* height: 200px; */
+  height: 60%;
   padding-bottom: 10px;
 }
 
 .project-status {
-  height: 10%;
+  /* height: 10%; */
+  height: 20%;
 }
 
 .projects-container {
@@ -190,6 +193,7 @@ footer p {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  width: 100%;  /* added */
 }
 
 .form-field label {
@@ -210,12 +214,14 @@ footer p {
 }
 
 .project-owner-title {
-  height: 50px;
+  /* height: 50px; */
+  height: 10%
 }
 
 .project-owner-text {
-  height: 160px;
+  /* height: 160px; */
   padding-bottom: 10px;
+  height: 30%;
 }
 
 .project-owner {
@@ -229,7 +235,8 @@ footer p {
 }
 
 .project-owner-status {
-  height: 120px;
+  /* height: 120px; */
+  height: 30%;
   width: 100%;
   margin: 10px 5px;
 }
@@ -248,5 +255,6 @@ footer p {
 .project-owner-edit-delete {
   margin-top: 5px;
   margin-bottom: 15px;
+  height: 30%;
 }
 /*# sourceMappingURL=style.css.map */
