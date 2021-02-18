@@ -10,13 +10,13 @@
 <p>Time needed per week: {{time_per_week}}</p>
 
 {{#if this.assignedToLoggedInWebDev}}
-<input type="button" value="Accepted" style="background-color: #00cc00; color: #ffffff;" />
+<input class="accept-btn" type="button" value="Accepted" />
 {{else}}
 
 {{#if this.loggedInWebDevRejected}}
-<input type="button" value="Rejected" style="background-color: #cc0000; color: #ffffff;" />
+<input class="reject-btn" type="button" value="Rejected" />
 {{else}}
-<input type="button" value="Pending" style="background-color: #cc0000; color: #ffffff;" />
+<input class="reject-btn" type="button" value="Pending" />
 {{/if}}
 
 {{/if}}

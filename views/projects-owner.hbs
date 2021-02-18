@@ -14,15 +14,20 @@
 
 {{!-- To be changed to link to special view for developer's profile --}}
 {{#each applicants}}
-<a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>
+<div class="flex-container btn-container">
 
-<form action="/accept/{{this._id}}/{{../_id}}" method="post">
-    <input class="btn" type="submit" style="background-color: #00cc00; color: #ffffff;" name="accept" value="Accept" />
-</form>
-<form action="/reject/{{this._id}}/{{../_id}}" method="post">
-    <input class="btn" type="submit" style="background-color: #cc0000; color: #ffffff;" name="reject" value="Reject" />
-</form>
+
+    <p><a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a></p>
+
+    <form action="/accept/{{this._id}}/{{../_id}}" method="post">
+        <input class="accept-btn" type="submit" name="accept" value="Accept" />
+    </form>
+    <form action="/reject/{{this._id}}/{{../_id}}" method="post">
+        <input class="reject-btn" type="submit" name="reject" value="Reject" />
+    </form>
+</div>
 <br>
+
 <br>
 {{/each}}
 
