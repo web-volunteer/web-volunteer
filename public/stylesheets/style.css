@@ -157,7 +157,7 @@ footer p {
 }
 
 .project {
-  height: 400px;
+  height: 550px;
   width: 350px;
   /* border: 1px solid #bfbfbf; */
   margin-bottom: 20px;
@@ -168,18 +168,18 @@ footer p {
 
 .project-title {
   /* height: 50px; */
-  height: 10%
+  height: 5%
 }
 
 .project-text {
   /* height: 200px; */
-  height: 60%;
+  height: 80%;
   padding-bottom: 10px;
 }
 
 .project-status {
   /* height: 10%; */
-  height: 20%;
+  height: 15%;
 }
 
 .projects-container {
