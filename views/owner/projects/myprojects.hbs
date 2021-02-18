@@ -1,38 +1,38 @@
 <h2>See your projects</h2>
 
-{{#each projectList}}
+<div class="projects-container flex-project">
+    <div class="projects-list">
+        {{#each projectList}}
+        <div class="flex-project project">
+            <h3 class="project-title">{{title}}</h3>
+            <div class="project-text">
+                <p>Description: {{description}}</p>
+                <p>Owner of this project: {{owner.username}}</p>
+                <p>Current status: {{status}}</p>
+                <p>Time needed per week: {{time_per_week}}</p>
+            </div>
+            <div class="project-status">
+            {{#if this.belongsToOwner}}
+                {{#each applicants}}
+                <a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>
+                <form action="/accept/{{this._id}}/{{../_id}}" method="post">
+                    <input type="submit" style="background-color: #00cc00; color: #ffffff;" name="accept" value="Accept" />
+                </form>
+                <form action="/reject/{{this._id}}/{{../_id}}" method="post">
+                    <input type="submit" style="background-color: #cc0000; color: #ffffff;" name="reject" value="Reject" />
+                </form>
+                {{/each}}
+                <a class="btn" href="/owner/{{_id}}/projects/edit">Edit</a>
+                <a class="btn" href="/owner/{{_id}}/projects/delete">Delete</a>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="project-buttons">
+        <p><a class="btn" href="/{{ownerId}}/projects-owner">See other projects</a></p>
+        <p><a class="btn back-btn" href="/owner">Go back</a></p>
+    </div>
+</div>
 
-<h3>{{title}}</h3>
-<p>Description: {{description}}</p>
-<p>Owner of this project: {{owner.username}}</p>
-<p>Current status: {{status}}</p>
-<p>Time needed per week: {{time_per_week}}</p>
-{{!-- <p>we are in line 9! {{belongsToOwner}}</p> --}}
 
-
-{{#if this.belongsToOwner}}
-
-{{!-- To be changed to link to special view for developer's profile --}}
-{{#each applicants}}
-<a href="/webdev/profile/{{this._id}}/myprofile">{{this.username}}</a>
-{{!-- &emsp;<button style="background-color: #00cc00; color: #ffffff;">Accept</button>&emsp;<input type="button"
-    value="Reject" style="background-color: #cc0000; color: #ffffff;" /> --}}
-<form action="/accept/{{this._id}}/{{../_id}}" method="post">
-    <input type="submit" style="background-color: #00cc00; color: #ffffff;" name="accept" value="Accept" />
-</form>
-<form action="/reject/{{this._id}}/{{../_id}}" method="post">
-    <input type="submit" style="background-color: #cc0000; color: #ffffff;" name="reject" value="Reject" />
-</form>
-<br>
-<br>
-{{/each}}
-
-<a class="btn" href="/owner/{{_id}}/projects/edit">Edit this project</a>
-<a class="btn" href="/owner/{{_id}}/projects/delete">Delete this project</a>
-
-{{/if}}
-{{/each}}
-
-
-<p><a class="btn" href="/{{ownerId}}/projects-owner">See other projects</a></p>
-<p><a class="btn back-btn" href="/owner">Go back</a></p>

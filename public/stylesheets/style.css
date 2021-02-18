@@ -140,7 +140,7 @@ footer p {
 }
 
 .form-field label {
-  width: 120px;
+  width: 130px; /*120*/
   text-align: start;
 }
 

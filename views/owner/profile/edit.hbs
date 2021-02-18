@@ -6,55 +6,65 @@
 
 <form class="flex-form" action="/owner/profile/{{this._id}}/edit" method="POST" enctype="multipart/form-data">
 
-
-    <label for="username">Username: </label>
-    <input type="username" name="username" id="username" value="{{username}}">
-
-    <label for="nameOrg">Name of your organisation: </label>
-    <input type="text" name="nameOrg" id="nameOrg" value="{{nameOrganisation}}">
-
-    <label for="firstName">First Name: </label>
-    <input type="text" name="firstName" id="firstName" value="{{firstName}}">
-
-    <label for="lastName">Last Name: </label>
-    <input type="text" name="lastName" id="lastName" value="{{lastName}}">
-
-    <label for="email">E-mail: </label>
-    <input type="email" name="email" id="email" value="{{email}}">
-
-    <label for="photo">Photo: </label>
-    <input type="file" name="photo" id="photo">
-
-    <label for="website">Website: </label>
-    <input type="url" name="website" id="website" placeholder="optional" value="{{website}}">
-
-    <label for="location">Your location: </label>
-    <input type="text" name="location" id="location" placeholder="city, country" value="{{location}}">
-
-    <label for="languages">Languages: </label>
-    <input type="text" name="languages" id="languages" placeholder="Enter languages you speak" value="{{languages}}">
-
-    <label for="description">Description: </label>
-    <textarea name="description" id="description" rows="4" cols="40"
-        placeholder="Please describe yourself or your institution in a few sentences.">{{description}}</textarea>
-
-    <label for="category">Category: </label>
-    <select name="category" id="category">
-        <option value="NGO">NGO</option>
-        <option value="individual">Individual</option>
-        <option value="association">Association</option>
-        <option value="startup">Startup</option>
-        <option value="education">Educational institution</option>
-        <option value="social">Social Services</option>
-        <option value="company">Company</option>
-        <option value="other">other</option>
-    </select>
-
+<div class="flex-form-fields">
+    <div class="form-field">
+        <label for="username">Username: </label>
+        <input type="username" name="username" id="username" value="{{username}}">
+    </div>
+    <div class="form-field">
+        <label for="nameOrg">Name of your organisation: </label>
+        <input type="text" name="nameOrg" id="nameOrg" value="{{nameOrganisation}}">
+    </div>
+    <div class="form-field">
+        <label for="firstName">First Name: </label>
+        <input type="text" name="firstName" id="firstName" value="{{firstName}}">
+    </div>
+    <div class="form-field">
+        <label for="lastName">Last Name: </label>
+        <input type="text" name="lastName" id="lastName" value="{{lastName}}">
+    </div>
+    <div class="form-field">
+        <label for="email">E-mail: </label>
+        <input type="email" name="email" id="email" value="{{email}}">
+    </div>
+    <div class="form-field">
+        <label for="photo">Photo: </label>
+        <input type="file" name="photo" id="photo">
+    </div>
+    <div class="form-field">
+        <label for="website">Website: </label>
+        <input type="url" name="website" id="website" placeholder="optional" value="{{website}}">
+    </div>
+    <div class="form-field">
+        <label for="location">Your location: </label>
+        <input type="text" name="location" id="location" placeholder="city, country" value="{{location}}">
+    </div>
+    <div class="form-field">
+        <label for="languages">Languages: </label>
+        <input type="text" name="languages" id="languages" placeholder="Enter languages you speak" value="{{languages}}">
+    </div>
+    <div class="form-field">
+        <label for="description">Description: </label>
+        <textarea name="description" id="description" rows="4" cols="40"
+            placeholder="Please describe yourself or your institution in a few sentences.">{{description}}</textarea>
+    </div>
+    <div class="form-field">
+        <label for="category">Category: </label>
+        <select name="category" id="category">
+            <option value="NGO">NGO</option>
+            <option value="individual">Individual</option>
+            <option value="association">Association</option>
+            <option value="startup">Startup</option>
+            <option value="education">Educational institution</option>
+            <option value="social">Social Services</option>
+            <option value="company">Company</option>
+            <option value="other">other</option>
+        </select>
+    </div>
+</div>
     <button class="btn" type="submit">Edit</button>
-
 </form>
 
 <p><a class="btn back-btn" href="/owner/profile/{{this._id}}/myprofile">Back to your profile</a></p>
-
 
 {{/with}}
