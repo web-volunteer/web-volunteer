@@ -5,6 +5,7 @@
 
 <form class="flex-form" action="/webdev/profile/{{developer._id}}/edit" method="POST" enctype="multipart/form-data">
 
+<div class="flex-form-fields">
     <div class="form-field">
         <label for="firstname">First Name: </label>
         <input type="text" name="firstname" id="firstname" value={{developer.firstname}}>
@@ -17,28 +18,21 @@
     </div>
 
     <div class="form-field">
-
         <label for="email">E-mail address: </label>
         <input type="email" name="email" id="email" required value={{developer.email}}>
     </div>
-
-    <br><br><br>
-    
-    <label for="photo">Photo: </label>
-    <input type="file" name="photo" id="photo">
-
-    {{!-- City partial --}}
+  
+    <div class="form-field">
+        <label for="photo">Photo: </label>
+        <input type="file" name="photo" id="photo">
+    </div>
 
     <div class="form-field">
-
         <label for="country">Country: </label>
-        {{!-- <input type="text" name="location" id="location" placeholder="City, Country" value={{developer.location}}>
-        --}}
         {{> locationPartial developer.country}}
     </div>
 
     <div class="form-field">
-
         <label for="city">City: </label>
         <input type="text" name="city" id="city" value={{developer.city}}>
     </div>
@@ -51,8 +45,6 @@
         </select>
     </div>
     <div class="form-field">
-
-
         <label for="secondarylanguage">Secondary language: </label>
         <select id="secondarylanguage" name="secondarylanguage">
             {{> languagePartial}}
@@ -61,20 +53,15 @@
 
 
     <div class="form-field">
-
         <label for="stack">Stack: </label>
         <input type="text" name="stack" id="stack" placeholder="Enter your technical stack comma separated"
             value={{#each developer.stack}}{{this}}{{/each}}>
     </div>
     <div class="form-field">
-
-
         <label for="website">Website: </label>
         <input type="url" name="website" id="website" value={{developer.website}}>
     </div>
     <div class="form-field">
-
-
         <label for="github">GitHub: </label>
         <input type="url" name="github" id="github" value={{developer.github}}>
     </div>
@@ -101,7 +88,6 @@
     </div>
 
     <div class="form-field">
-
         <label for="experience">Choose your experience level: </label>
         <select name="experience" id="experience">
             {{#if devExperience.lessthan1year}}
@@ -122,11 +108,11 @@
         </select>
     </div>
     <div class="form-field">
-
         <label for="description">Description: </label>
         <textarea name="description" id="description" rows="4" cols="40"
             placeholder="Please describe yourself or your institution in a few sentences.">{{developer.description}}</textarea>
     </div>
+</div>
 
     <button class="btn" type="submit">Edit</button>
 

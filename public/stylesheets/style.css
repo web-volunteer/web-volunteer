@@ -57,7 +57,7 @@ textarea {
 
 .form-field {
   display: flex;
-align-items: center;
+  align-items: center;
 }
 
 .btn {
@@ -94,13 +94,23 @@ footer p {
 }
 
 /* Classes added by Ahmed */
+
+.flex-project {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 17px;
+}
+
 .project {
   height: 400px;
   width: 350px;
-  border: 1px solid #bfbfbf;
+  /* border: 1px solid #bfbfbf; */
   margin-bottom: 20px;
   padding-left: 10px;
   padding-right: 10px;
+  box-shadow: 2px 2px 5px 1px #8573BF;
 }
 
 .project-title {
@@ -128,4 +138,22 @@ footer p {
   justify-content: space-evenly;
   align-items: center;
 }
+
+.form-field label {
+  width: 120px;
+  text-align: start;
+}
+
+.form-field input  {
+  width: 200px;
+}
+
+.form-field select {
+  width: 218px;
+}
+
+.flex-form-fields {
+  margin-left: 100px;
+}
+
 /*# sourceMappingURL=style.css.map */
