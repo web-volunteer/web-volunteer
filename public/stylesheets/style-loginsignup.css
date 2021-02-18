@@ -6,6 +6,7 @@ body {
   align-items: center;
   margin: 0 auto;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 .login-container {
