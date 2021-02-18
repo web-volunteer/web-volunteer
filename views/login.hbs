@@ -4,20 +4,29 @@
 
 <div class="login-container flex-container">
 
-<h2>Log In</h2>
-<form action="/login" method="POST">
-  <label for="username">Username</label>
-  <input type="text" name="username" required>
-  <label for="">Password</label>
-  <input type="password" name="password" required>
-  <button class="btn" type="submit">Log In</button>
-</form>
-{{#if message}}
+  <h1>Log In</h1>
+  <div class="flex-container">
+    <form action="/login" method="POST">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+      </div>
+      <div>
+        <label for="">Password:</label>
+        <input type="password" name="password" required>
+      </div>
+      <br>
+      <div>
+        <button class="btn" type="submit">Log In</button>
+      </div>
+    </form>
+  </div>
+  {{#if message}}
   <p style='color: red'>{{message}}</p>
-{{/if}}
-<br><br><br>
-<div>
+  {{/if}}
+  <br><br><br>
+  <div>
     <a class="btn back-btn" href="/">Back to homepage</a>
-</div>
+  </div>
 
 </div>
