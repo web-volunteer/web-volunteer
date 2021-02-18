@@ -1,7 +1,5 @@
 <h2>Edit your profile</h2>
 
-{{!-- to do: dynamic ID --}}
-
 
 <form class="flex-form" action="/webdev/profile/{{developer._id}}/edit" method="POST" enctype="multipart/form-data">
 
@@ -46,14 +44,13 @@
     <div class="form-field">
 
         <label for="primarylanguage">Primary language: </label>
-        <select id="primarylanuage" name="primarylanguage">
+        <select id="primarylanguage" name="primarylanguage">
             {{> languagePartial}}
         </select>
     </div>
     <div class="form-field">
 
-
-        <label for="secondarylanguage">Secondary language: </label>
+     <label for="secondarylanguage">Secondary language: </label>
         <select id="secondarylanguage" name="secondarylanguage">
             {{> languagePartial}}
         </select>
