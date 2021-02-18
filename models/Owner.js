@@ -16,6 +16,7 @@ const ownerSchema = new Schema({
   imgPath: String,
   imgName: String,
   publicId: String,
+  website: String,
   nameOrganisation: String,
   firstName: String,
   lastName: String,
