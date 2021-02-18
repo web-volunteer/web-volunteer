@@ -6,6 +6,7 @@ body {
   align-items: center;
   margin: 0 auto;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 .login-container {
@@ -13,4 +14,16 @@ body {
   border-radius: 25px;
   flex-direction: column;
   padding: 20px;
+}
+
+.login-btn {
+  display: none;
+}
+
+.navbar {
+  display: none;
+}
+
+footer {
+  display: none;
 }

@@ -3,7 +3,9 @@
 <h2>Edit your profile</h2>
 {{#with owner}}
 
-<form action="/owner/profile/{{this._id}}/edit" method="POST" enctype="multipart/form-data">
+
+<form class="flex-form" action="/owner/profile/{{this._id}}/edit" method="POST" enctype="multipart/form-data">
+
 
     <label for="username">Username: </label>
     <input type="username" name="username" id="username" value="{{username}}">

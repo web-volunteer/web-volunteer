@@ -2,6 +2,22 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-family: "Open Sans", sans-serif;
+  width: 100vh;
+  margin: 0 auto;
+  background-color: #c6ccf0;
+}
+
+.homepage-container {
+  background-color: #cbebe8;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.navbar {
+  color: #cbebe8;
+  background-color: #19aaaa;
+  padding: 8px;
+  text-align: right;
 }
 
 p {
@@ -23,6 +39,27 @@ h2 {
   align-items: center;
 }
 
+.flex-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 17px;
+}
+
+.flex-form input,
+select,
+textarea {
+  font-size: 16px;
+  padding: 7px;
+  margin: 8px;
+}
+
+.form-field {
+  display: flex;
+align-items: center;
+}
+
 .btn {
   font-weight: bold;
   font-size: 18px;
@@ -33,9 +70,27 @@ h2 {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+  margin: 5px;
 }
 
 .back-btn {
   background-color: #8573bf;
 }
+
+footer {
+  color: #cbebe8;
+  background-color: #19aaaa;
+  padding: 1px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 20px;
+}
+
+.logout-btn {
+  background-color: #8573bf;
+}
+
 /*# sourceMappingURL=style.css.map */
