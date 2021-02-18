@@ -28,11 +28,29 @@
     <label for="website">Website: </label>
     <input type="url" name="website" id="website" placeholder="optional" value="{{website}}">
 
-    <label for="location">Your location: </label>
+    <label for="country">Country: </label>
+{{!-- <input type="text" name="location" id="location" placeholder="City, Country" value={{developer.location}}>
+--}}
+    {{> locationPartial country}}
+
+    <label for="city">City: </label>
+    <input type="text" name="city" id="city" value={{city}}>
+
+    <label for="primarylanguage">Primary language: </label>
+    <select id="primarylanguage" name="primarylanguage">
+        {{> languagePartial}}
+    </select>
+
+    <label for="secondarylanguage">Secondary language: </label>
+    <select id="secondarylanguage" name="secondarylanguage">
+        {{> languagePartial}}
+    </select>
+
+    {{!-- <label for="location">Your location: </label>
     <input type="text" name="location" id="location" placeholder="city, country" value="{{location}}">
 
     <label for="languages">Languages: </label>
-    <input type="text" name="languages" id="languages" placeholder="Enter languages you speak" value="{{languages}}">
+    <input type="text" name="languages" id="languages" placeholder="Enter languages you speak" value="{{languages}}"> --}}
 
     <label for="description">Description: </label>
     <textarea name="description" id="description" rows="4" cols="40"

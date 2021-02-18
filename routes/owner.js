@@ -19,7 +19,8 @@ router.get("/owner/profile/:id/myprofile", (req, res, next) => {
   const ownerId = req.params.id;
   //console.log('owner session: ', ownerId)
 Owner.findById(ownerId)
-    .then(owner => {
+  .then(owner => {
+      console.log('logging owner from database:', owner)
       res.render("owner/profile/myprofile", {owner});
   }).catch(err => {
       console.log(`error from get route /owner/profile/myprofile -->`, err);
@@ -48,9 +49,11 @@ router.post("/owner/profile/:id/edit", uploader.single('photo'), (req, res, next
     firstName,
     lastName,
     email,
+    country,
+    city,
+    primarylanguage,
+    secondarylanguage,
     website,
-    location,
-    languages,
     description,
     category
   } = req.body;
@@ -62,18 +65,21 @@ router.post("/owner/profile/:id/edit", uploader.single('photo'), (req, res, next
     // imgPath,
     // imgName,
     // publicId,
+    country,
+    city,
+    primarylanguage,
+    secondarylanguage,
     website,
-    location,
-    languages,
     description,
-    category
-  }).then((owner) => {
+    category,
+    
+  }, {new: true}).then((owner) => {
       if(imgPath !== null) {
-        Owner.findByIdAndUpdate(req.params.id, {
+        Owner.findByIdAndUpdate(ownerId, {
           imgPath: imgPath,
           imgName: imgName,
           publicId, publicId
-        }).then(()=> {
+        }).then(() => {
           res.redirect(`/owner/profile/${ownerId}/myprofile`);;
         })
       } else {
