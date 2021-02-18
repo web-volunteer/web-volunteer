@@ -57,10 +57,14 @@ router.get("/webdev/myprojects", (req, res, next) => {
 });
 
 router.post('/webdev/profile/:id/edit', uploader.single('photo'), (req, res, next) => {
-  console.log(req.body);
-  const imgPath = req.file.path;
-  const imgName = req.file.originalname;
-  const publicId = req.file.filename;
+  console.log(req.file);
+  let imgPath = (req.file)? req.file.path : null;
+  let imgName = (req.file)? req.file.originalname : null;
+  let publicId = (req.file)? req.file.filename : null;
+  // let imgPath = req.file.path;
+  // let imgName = req.file.originalname;
+  // let publicId = req.file.filename;
+
   const { firstname,
           lastname,
           email,
@@ -78,9 +82,9 @@ router.post('/webdev/profile/:id/edit', uploader.single('photo'), (req, res, nex
   Developer.findByIdAndUpdate(req.params.id, { firstname: firstname,
                                                lastname: lastname,
                                                email: email,
-                                               imgPath: imgPath,
-                                               imgName: imgName,
-                                               publicId, publicId,
+                                              //  imgPath: imgPath,
+                                              //  imgName: imgName,
+                                              //  publicId, publicId,
                                                country: country,
                                                city, city,
                                                primarylanguage: primarylanguage,
@@ -92,8 +96,18 @@ router.post('/webdev/profile/:id/edit', uploader.single('photo'), (req, res, nex
                                                github: github,
                                                description: description
                                                })
-    .then(() => {
-      res.redirect(`/webdev/profile/${req.params.id}/myprofile`);
+    .then((developer) => {
+      if(imgPath !== null) {
+        Developer.findByIdAndUpdate(req.params.id, {
+          imgPath: imgPath,
+          imgName: imgName,
+          publicId, publicId
+        }).then(()=> {
+          res.redirect(`/webdev/profile/${req.params.id}/myprofile`);
+        })
+      } else {
+        res.redirect(`/webdev/profile/${req.params.id}/myprofile`);
+      }
     })
     .catch(err => {
       console.log("Error while finding a webdev by id and updating: ", err);

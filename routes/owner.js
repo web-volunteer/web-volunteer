@@ -38,9 +38,11 @@ router.get("/owner/profile/:id/edit", (req, res, next) => {
 
 router.post("/owner/profile/:id/edit", uploader.single('photo'), (req, res, next) => {
   const ownerId = req.params.id;
-  const imgPath = req.file.path;
-  const imgName = req.file.originalname;
-  const publicId = req.file.filename;
+
+  let imgPath = (req.file)? req.file.path : null;
+  let imgName = (req.file)? req.file.originalname : null;
+  let publicId = (req.file)? req.file.filename : null;
+
   const {
     nameOrg,
     firstName,
@@ -57,16 +59,27 @@ router.post("/owner/profile/:id/edit", uploader.single('photo'), (req, res, next
     firstName,
     lastName,
     email,
-    imgPath,
-    imgName,
-    publicId,
+    // imgPath,
+    // imgName,
+    // publicId,
     website,
     location,
     languages,
     description,
     category
-  }).then(() => {
-    res.redirect(`/owner/profile/${ownerId}/myprofile`);
+  }).then((owner) => {
+      if(imgPath !== null) {
+        Owner.findByIdAndUpdate(req.params.id, {
+          imgPath: imgPath,
+          imgName: imgName,
+          publicId, publicId
+        }).then(()=> {
+          res.redirect(`/owner/profile/${ownerId}/myprofile`);;
+        })
+      } else {
+        res.redirect(`/owner/profile/${ownerId}/myprofile`);
+      }
+    // res.redirect(`/owner/profile/${ownerId}/myprofile`);
   })
 })
 
