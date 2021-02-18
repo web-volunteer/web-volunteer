@@ -51,6 +51,7 @@ h2 {
 .profile-container {
   justify-content: space-evenly;
   text-align: start;
+  align-items: flex-start; /* added late night */
 }
 
 .btn-container {
@@ -256,5 +257,13 @@ footer p {
   margin-top: 5px;
   margin-bottom: 15px;
   height: 25%;
+}
+
+.profile-text-right {
+  width: 30%;
+}
+
+.profile-text-left {
+  width: 30%;
 }
 /*# sourceMappingURL=style.css.map */
