@@ -1,28 +1,34 @@
 <h2>My projects</h2>
 
+<div class="projects-container flex-project">
+    <div class="projects-list">
+        {{#each projectList}}
+        <div class="flex-project project">
+            <h3 class="project-title">{{title}}</h3>
+            <div class="project-text">
+                <p>Description: {{description}}</p>
+                <p>Owner of this project: {{owner.username}}</p>
+                <p>Current status: {{status}}</p>
+                <p>Time needed per week: {{time_per_week}}</p>
+            </div>
+            <div class="project-status">
+                {{#if this.assignedToLoggedInWebDev}}
+                <input class="accept-btn" type="button" value="Accepted"/>
+                {{else}}
 
-{{#each projectList}}
+                {{#if this.loggedInWebDevRejected}}
+                <input class="reject-btn" type="button" value="Rejected"/>
+                {{else}}
+                <input class="reject-btn" type="button" value="Pending"/>
+                {{/if}}
 
-<h3>{{title}}</h3>
-<p>Description: {{description}}</p>
-<p>Owner of this project: {{owner.username}}</p>
-<p>Current status: {{status}}</p>
-<p>Time needed per week: {{time_per_week}}</p>
-
-{{#if this.assignedToLoggedInWebDev}}
-<input class="accept-btn" type="button" value="Accepted" />
-{{else}}
-
-{{#if this.loggedInWebDevRejected}}
-<input class="reject-btn" type="button" value="Rejected" />
-{{else}}
-<input class="reject-btn" type="button" value="Pending" />
-{{/if}}
-
-{{/if}}
-
-{{/each}}
-
-
-<a class="btn" href="/webdev/{{webdevID}}/projects">Find a new project</a>
-<p><a class="btn back-btn" href="/webdev/">Go back</a></p>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="project-buttons">
+        <a class="btn" href="/webdev/{{webdevID}}/projects">Find a new project</a>
+        <p><a class="btn back-btn" href="/webdev/">Go back</a></p>
+    </div>
+</div>  

@@ -1,22 +1,30 @@
 <h1>All projects</h1>
 
+<div class="projects-container flex-project">
+    <div class="projects-list">
+        {{#each projectList}}
+            <div class="flex-project project">
+                <h2>{{title}}</h2>
+                <div class="project-text">
+                    <p><strong> Description:</strong> {{description}}</p>
+                    <p><strong> Owner of this project:</strong> {{owner.username}}</p>
+                    <p><strong> Current status:</strong> {{status}}</p>
+                    <p><strong> Time needed per week:</strong> {{time_per_week}}</p>
+                </div>
+                <div class="project-status">
+                    {{#if displayApplyLink}}
+                    <a class="btn" href="/apply/{{_id}}/{{../webdevID}}/">Apply to this project</a>
+                    {{else}}
+                    <p><strong>Applied!</strong></p>
+                    {{/if}}
+                </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="project-buttons">
+        <p><a class="btn" href="/webdev/{{webdevID}}/myprojects">See your projects</a></p>
+        <p><a class="btn back-btn" href="/webdev/">Go back</a></p>
+    </div>
+</div>
 
-{{#each projectList}}
 
-<h2>{{title}}</h2>
-<p><strong> Description:</strong> {{description}}</p>
-<p><strong> Owner of this project:</strong> {{owner.username}}</p>
-<p><strong> Current status:</strong> {{status}}</p>
-<p><strong> Time needed per week:</strong> {{time_per_week}}</p>
-
-
-{{#if displayApplyLink}}
-<a class="btn" href="/apply/{{_id}}/{{../webdevID}}/">Apply to this project</a>
-{{else}}
-<p><strong>Applied!</strong></p>
-{{/if}}
-
-{{/each}}
-
-<p><a class="btn" href="/webdev/{{webdevID}}/myprojects">See your projects</a></p>
-<p><a class="btn back-btn" href="/webdev/">Go back</a></p>
