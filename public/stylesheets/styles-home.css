@@ -4,16 +4,6 @@ body {
   width: 100vh;
 }
 
-.homepage-container {
-  background-color: #cbebe8;
-}
-.navbar {
-  color: #cbebe8;
-  background-color: #19aaaa;
-  padding: 8px;
-  text-align: right;
-}
-
 .navbar a {
   background-color: #8573bf;
 }
@@ -52,14 +42,7 @@ p {
   margin: 30px 0;
 }
 
-footer {
-  color: #cbebe8;
-  background-color: #19aaaa;
-  padding: 1px;
-  margin-top: 24px;
-  text-align: center;
+.logout-btn {
+  display: none;
 }
 
-footer p {
-  font-size: 20px;
-}

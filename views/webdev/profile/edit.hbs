@@ -1,117 +1,128 @@
-<h2>Edit your profile, web developer</h2>
+<h2>Edit your profile</h2>
 
 {{!-- to do: dynamic ID --}}
 
-<form action="/webdev/profile/{{developer._id}}/edit" method="POST">
+<form class="flex-form" action="/webdev/profile/{{developer._id}}/edit" method="POST">
+    <div class="form-field">
 
-    <br>
+        <label for="firstname">First Name: </label>
+        <input type="text" name="firstname" id="firstname" value={{developer.firstname}}>
+    </div>
 
-    <label for="firstname">First Name: </label>
-    <input type="text" name="firstname" id="firstname" value={{developer.firstname}}>
+    <div class="form-field">
 
-    <br><br><br>
+        <label for="lastname">Last Name: </label>
+        <input type="text" name="lastname" id="lastname" value={{developer.lastname}}>
+    </div>
 
-    <label for="lastname">Last Name: </label>
-    <input type="text" name="lastname" id="lastname" value={{developer.lastname}}>
+    <div class="form-field">
 
-    <br><br><br>
-
-    <label for="email">E-mail address: </label>
-    <input type="email" name="email" id="email" required value={{developer.email}} >
+        <label for="email">E-mail address: </label>
+        <input type="email" name="email" id="email" required value={{developer.email}}>
+    </div>
 
     {{!-- City partial --}}
-    <br><br><br>
 
-    <label for="country">Country: </label>
-    {{!-- <input type="text" name="location" id="location" placeholder="City, Country" value={{developer.location}}> --}}
-     {{> locationPartial developer.country}}
+    <div class="form-field">
 
-    <br><br><br>
+        <label for="country">Country: </label>
+        {{!-- <input type="text" name="location" id="location" placeholder="City, Country" value={{developer.location}}>
+        --}}
+        {{> locationPartial developer.country}}
+    </div>
 
-    <label for="city">City: </label>
-    <input type="text" name="city" id="city" value={{developer.city}}>
+    <div class="form-field">
 
-    <br><br><br>
+        <label for="city">City: </label>
+        <input type="text" name="city" id="city" value={{developer.city}}>
+    </div>
 
-    <label for="primarylanguage">Primary language: </label>
-    <select id="primarylanuage" name="primarylanguage">
-        {{> languagePartial}}
-    </select>
+    <div class="form-field">
 
-    <br><br><br>
+        <label for="primarylanguage">Primary language: </label>
+        <select id="primarylanuage" name="primarylanguage">
+            {{> languagePartial}}
+        </select>
+    </div>
+    <div class="form-field">
 
-    <label for="secondarylanguage">Secondary language: </label>
-    <select id="secondarylanguage" name="secondarylanguage">
-        {{> languagePartial}}
-    </select>
-    
-    <br><br><br>
 
-    <label for="stack">Stack: </label>
-    <input type="text" name="stack" id="stack" placeholder="Enter your technical stack comma separated" value={{#each developer.stack}}{{this}}{{/each}}>
+        <label for="secondarylanguage">Secondary language: </label>
+        <select id="secondarylanguage" name="secondarylanguage">
+            {{> languagePartial}}
+        </select>
+    </div>
 
-    <br><br><br>
 
-    <label for="website">Website: </label>
-    <input type="url" name="website" id="website" value={{developer.website}}>
+    <div class="form-field">
 
-    <br><br><br>
+        <label for="stack">Stack: </label>
+        <input type="text" name="stack" id="stack" placeholder="Enter your technical stack comma separated"
+            value={{#each developer.stack}}{{this}}{{/each}}>
+    </div>
+    <div class="form-field">
 
-    <label for="github">GitHub: </label>
-    <input type="url" name="github" id="github" value={{developer.github}}>    
 
-    <br><br><br>
+        <label for="website">Website: </label>
+        <input type="url" name="website" id="website" value={{developer.website}}>
+    </div>
+    <div class="form-field">
 
-    <label for="time">Choose your availability: </label>
-    <select name="time" id="time">
-        {{#if devAvailability.lessthan5hrs}}
+
+        <label for="github">GitHub: </label>
+        <input type="url" name="github" id="github" value={{developer.github}}>
+    </div>
+    <div class="form-field">
+
+        <label for="time">Choose your availability: </label>
+        <select name="time" id="time">
+            {{#if devAvailability.lessthan5hrs}}
             <option value="1" selected>Less than 5 hours/week.</option>
-        {{else}}
+            {{else}}
             <option value="1">Less than 5 hours/week.</option>
-        {{/if}}
-        {{#if devAvailability.fivetotenhrs}}
+            {{/if}}
+            {{#if devAvailability.fivetotenhrs}}
             <option value="2" selected>5 to 10 hours/week.</option>
-        {{else}}
+            {{else}}
             <option value="2">5 to 10 hours/week.</option>
-        {{/if}}
-        {{#if devAvailability.morethan10hrs}}
+            {{/if}}
+            {{#if devAvailability.morethan10hrs}}
             <option value="3" selected>More than 10 hours/week.</option>
-        {{else}}
+            {{else}}
             <option value="3">More than 10 hours/week.</option>
-        {{/if}}        
-    </select>
+            {{/if}}
+        </select>
+    </div>
 
-    <br><br><br>
+    <div class="form-field">
 
-    <label for="experience">Choose your experience level: </label>
-    <select name="experience" id="experience">
-        {{#if devExperience.lessthan1year}}
+        <label for="experience">Choose your experience level: </label>
+        <select name="experience" id="experience">
+            {{#if devExperience.lessthan1year}}
             <option value="1" selected>Less than a year.</option>
-        {{else}}
+            {{else}}
             <option value="1">Less than a year.</option>
-        {{/if}}
-        {{#if devExperience.onetofiveyears}}
-            <option value="2" selected>From 1 to 5 years.</option>            
-        {{else}}
+            {{/if}}
+            {{#if devExperience.onetofiveyears}}
+            <option value="2" selected>From 1 to 5 years.</option>
+            {{else}}
             <option value="2">From 1 to 5 years.</option>
-        {{/if}}
-        {{#if devExperience.morethan5}}
+            {{/if}}
+            {{#if devExperience.morethan5}}
             <option value="3" selected>More than 5 years.</option>
-        {{else}}
+            {{else}}
             <option value="3">More than 5 years.</option>
-        {{/if}}
-    </select>
+            {{/if}}
+        </select>
+    </div>
+    <div class="form-field">
 
-    <br><br><br>
+        <label for="description">Description: </label>
+        <textarea name="description" id="description" rows="4" cols="40"
+            placeholder="Please describe yourself or your institution in a few sentences.">{{developer.description}}</textarea>
+    </div>
 
-    <label for="description">Description: </label>
-    <textarea name="description" id="description" rows="4" cols="40"
-     placeholder="Please describe yourself or your institution in a few sentences.">{{developer.description}}</textarea>
-
-    <br><br><br>
-    
     <button class="btn" type="submit">Edit</button>
-
 
 </form>
 
