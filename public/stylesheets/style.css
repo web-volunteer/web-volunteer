@@ -215,17 +215,17 @@ footer p {
 
 .project-owner-title {
   /* height: 50px; */
-  height: 10%
+  height: 5%
 }
 
 .project-owner-text {
   /* height: 160px; */
   padding-bottom: 10px;
-  height: 30%;
+  height: 50%;
 }
 
 .project-owner {
-  height: 500px;
+  height: 700px;
   width: 350px;
   /* border: 1px solid #bfbfbf; */
   margin-bottom: 20px;
@@ -236,7 +236,7 @@ footer p {
 
 .project-owner-status {
   /* height: 120px; */
-  height: 30%;
+  height: 20%;
   width: 100%;
   margin: 10px 5px;
 }
@@ -255,6 +255,6 @@ footer p {
 .project-owner-edit-delete {
   margin-top: 5px;
   margin-bottom: 15px;
-  height: 30%;
+  height: 25%;
 }
 /*# sourceMappingURL=style.css.map */
