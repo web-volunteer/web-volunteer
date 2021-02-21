@@ -32,8 +32,7 @@ router.get("/webdev/profile/:id/edit", (req, res, next) => {
   Developer.findById(req.params.id)
     .then(developer => {
       //toDo: handle the selected values for location and language
-      //developer.stack = developer.stack.join(', ');
-      
+     
       /* should be in the same order of values as the experience enum in Developer model */
       const devExperience = { lessthan1year: false, onetofiveyears: false, morethan5: false}
       let expKeys = Object.keys(devExperience);
@@ -57,13 +56,10 @@ router.get("/webdev/myprojects", (req, res, next) => {
 });
 
 router.post('/webdev/profile/:id/edit', uploader.single('photo'), (req, res, next) => {
-  console.log(req.file);
+
   let imgPath = (req.file)? req.file.path : null;
   let imgName = (req.file)? req.file.originalname : null;
   let publicId = (req.file)? req.file.filename : null;
-  // let imgPath = req.file.path;
-  // let imgName = req.file.originalname;
-  // let publicId = req.file.filename;
 
   const { firstname,
           lastname,
@@ -82,9 +78,6 @@ router.post('/webdev/profile/:id/edit', uploader.single('photo'), (req, res, nex
   Developer.findByIdAndUpdate(req.params.id, { firstname: firstname,
                                                lastname: lastname,
                                                email: email,
-                                              //  imgPath: imgPath,
-                                              //  imgName: imgName,
-                                              //  publicId, publicId,
                                                country: country,
                                                city, city,
                                                primarylanguage: primarylanguage,

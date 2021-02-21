@@ -21,14 +21,10 @@ router.get("/login", (req, res, next) => {
 
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
-  console.log(username, password);
-
   Developer.findOne({ username: username })
     .then(devFromDB => {
       Owner.findOne({ username: username })
          .then(ownerFromDB => {
-            console.log('dev :', devFromDB)
-            console.log('owner: ',ownerFromDB)
             if (devFromDB === null && ownerFromDB === null) {
                 // if username does not exist as developer or owner
                 res.render('login', { message: 'Invalid credentials' });
@@ -42,18 +38,15 @@ router.post('/login', (req, res) => {
                     res.render('login', { message: 'Invalid credentials' });
                   } 
             } else {
-                console.log('I am in the else!')
                 // username exists as an owner
                 if (bcrypt.compareSync(password, ownerFromDB.password)) {
                   req.session.user = ownerFromDB;
-                  console.log('owner: ', ownerFromDB)
                     res.render('owner/index.hbs', { owner: ownerFromDB });
                   } else {
                     res.render('login', { message: 'Invalid credentials' });
                   } 
             }
             // Assumption: username cannot be both a developer and owner. 
-            // ToDo: Prevent this in signup by checking both collections
          })
     })
 
@@ -62,9 +55,9 @@ router.post('/login', (req, res) => {
 
 // the Webdev signup form posts to this route
 router.post('/signupWebDev', (req, res) => {
-  console.log("Webdev post is triggered")
+
   const { username, password, email } = req.body;
-  console.log(username, password, email);
+
   if (password.length < 8) {
     return res.render('signup', { message: 'Your password has to be minimum 8 characters long.' });
   }
@@ -93,9 +86,7 @@ router.post('/signupWebDev', (req, res) => {
 
 // the Owner signup form posts to this route
 router.post('/signupOwner', (req, res) => {
-    console.log("Owner post is triggered")
     const { username, password, email } = req.body;
-    console.log(username, password, email);
     if (password.length < 8) {
       return res.render('signup', { message: 'Your password has to be minimum 8 characters long.' });
     }
@@ -112,7 +103,6 @@ router.post('/signupOwner', (req, res) => {
           const hash = bcrypt.hashSync(password, salt)
           Owner.create({ username: username, password: hash, email: email })
             .then(ownerFromDB => {
-              console.log(ownerFromDB);
               res.redirect('/login');
             })
         }

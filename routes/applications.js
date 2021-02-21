@@ -5,24 +5,19 @@ const Owner = require('../models/Owner')
 
 
 router.get("/apply/:projectID/:webdevID/", (req, res, next) => {
-    console.log(`Hi! from the application process! Webdev with id ${req.params.webdevID} is applying to project with id ${req.params.projectID}`);
     Project.findByIdAndUpdate(req.params.projectID, 
         {
             "$push": { "applicants": req.params.webdevID },
             "$pull": { "rejected": req.params.webdevID }
         }, 
-        {new: true}).then(project => {
-        //project.applicants.push(req.params.webdevID);
+        {new: true}).then(project => {    
         res.redirect(`/webdev/${req.params.webdevID}/myprojects`);
-        console.log('This project now has an extra applicant: ', project);
     }).catch(err => {
         console.log('Error while finding a project by ID during application: ', err);
     })
 });
 
 router.post("/accept/:webdevID/:projectID", (req, res, next) => {
-    console.log("Accept");
-    console.log(req.params.webdevID);
     Project.findByIdAndUpdate(req.params.projectID, 
         {
             "$push" : { "contributer": req.params.webdevID}, 
@@ -31,8 +26,6 @@ router.post("/accept/:webdevID/:projectID", (req, res, next) => {
         },
         {new: true} )
     .then(project => {
-        console.log(project);
-        //res.redirect(`/${project.owner}/projects-owner`)
         res.redirect(`/owner/${project.owner}/projects/myprojects`);
     }).catch(err => {
         console.log("Error while finding project by ID after accept: ", err);
@@ -41,7 +34,6 @@ router.post("/accept/:webdevID/:projectID", (req, res, next) => {
 
 
 router.post("/reject/:webdevID/:projectID", (req, res, next) => {
-    console.log("reject");
     Project.findByIdAndUpdate(req.params.projectID, 
         {
             "$push" : { "rejected": req.params.webdevID},
@@ -49,9 +41,7 @@ router.post("/reject/:webdevID/:projectID", (req, res, next) => {
         },
         {new: true} )
     .then(project => {
-        console.log(project);
         res.redirect(`/${project.owner}/projects-owner`)
-        //res.redirect(`/owner/${project.owner}/projects/myprojects`);
     }).catch(err => {
         console.log("Error while finding project by ID after accept: ", err);
     })
