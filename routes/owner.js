@@ -8,7 +8,6 @@ router.get("/owner", (req, res, next) => {
       const ownerId = req.session.user._id;
   Owner.findById(ownerId)
     .then(owner => {
-      console.log('log from /owner: ', owner);
       res.render("owner", {owner});
   }).catch(err => {
       console.log(`error from get route /owner -->`, err);
@@ -17,10 +16,8 @@ router.get("/owner", (req, res, next) => {
 
 router.get("/owner/profile/:id/myprofile", (req, res, next) => {
   const ownerId = req.params.id;
-  //console.log('owner session: ', ownerId)
 Owner.findById(ownerId)
   .then(owner => {
-      console.log('logging owner from database:', owner)
       res.render("owner/profile/myprofile", {owner});
   }).catch(err => {
       console.log(`error from get route /owner/profile/myprofile -->`, err);
@@ -62,9 +59,6 @@ router.post("/owner/profile/:id/edit", uploader.single('photo'), (req, res, next
     firstName,
     lastName,
     email,
-    // imgPath,
-    // imgName,
-    // publicId,
     country,
     city,
     primarylanguage,
@@ -85,19 +79,17 @@ router.post("/owner/profile/:id/edit", uploader.single('photo'), (req, res, next
       } else {
         res.redirect(`/owner/profile/${ownerId}/myprofile`);
       }
-    // res.redirect(`/owner/profile/${ownerId}/myprofile`);
   })
 })
 
 router.get("/owner/:id/projects/create", (req, res, next) => {
   const ownerId = req.params.id;
-  //console.log(`ownerID: `, ownerId);
     res.render("owner/projects/create", {ownerId});
 })
 
 router.get("/owner/:id/projects/edit", (req, res, next) => {
   const ownerId = req.params.id;
-  console.log('project id log:', ownerId)
+
   Project.findById(ownerId)
     .then(project => {
       res.render("owner/projects/edit", {project});
@@ -118,9 +110,5 @@ router.get('/owner/:id/projects/delete', (req, res) => {
       console.log(err);
     })
 })
-
-
-
-
 
 module.exports = router;
